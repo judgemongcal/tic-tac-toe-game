@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap");
+
+:root {
+	--green: rgba(49, 195, 189, 1);
+	--green-active: rgba(101, 233, 228, 1);
+	--yellow: rgba(242, 177, 55, 1);
+	--yellow-active: rgba(255, 200, 96, 1);
+	--dark-navy: rgba(26, 42, 51, 1);
+	--semi-dark-navy: rgba(31, 54, 65, 1);
+	--silver: rgba(168, 191, 201, 1);
+	--silver-active: rgba(219, 232, 237, 1);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+	padding: 0;
+	font-family: "Outfit", sans-serif;
+}
