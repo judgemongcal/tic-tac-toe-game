@@ -70,6 +70,7 @@ body {
 	font-size: 1rem;
 	color: var(--silver);
 	padding: 2rem;
+	letter-spacing: 1px;
 }
 
 .game-container h2 {
@@ -77,6 +78,7 @@ body {
 	margin-bottom: 1.5rem;
 	font-weight: 500;
 	color: var(--silver2);
+	letter-spacing: 0.88px;
 }
 
 .mark-options {
@@ -85,10 +87,62 @@ body {
 	justify-content: space-evenly;
 	margin: auto 1.5rem 1rem 1.5rem;
 	background-color: var(--dark-navy);
-	padding: 1rem;
+	padding: 0.75rem 0.75rem;
 	border-radius: 10px;
+	gap: 5px;
 }
 
 .mark-options img {
-	width: 3rem;
+	width: 2rem;
+}
+
+.x-option,
+.o-option {
+	padding: 0.75rem 2.85rem;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.x-option:hover {
+	background-color: var(--silver);
+}
+
+.o-option:hover {
+	background-color: var(--silver);
+}
+
+.buttons {
+	margin: 3rem auto 3rem auto;
+	display: flex;
+	flex-direction: column;
+	width: 20.5rem;
+}
+
+.buttons button {
+	padding: 1rem;
+	border: none;
+	border-radius: 15px;
+	font-weight: 700;
+	font-size: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.cpu {
+	background-color: var(--yellow);
+	box-shadow: 0px 8px 0 0 #cc8b13;
+	transition: background-color 0.3s ease;
+}
+
+.cpu:hover {
+	background-color: var(--yellow-active);
+}
+
+.player {
+	background-color: var(--green);
+	box-shadow: 0px 8px 0 0 #118c87;
+	transition: background-color 0.3s ease;
+}
+
+.player:hover {
+	background-color: var(--green-active);
 }
