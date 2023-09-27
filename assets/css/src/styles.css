@@ -39,3 +39,23 @@ dd {
 body {
 	background-color: var(--dark-navy);
 }
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 30%;
+}
+
+.logos {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logos img {
+	width: 6rem;
+}
+
+.game-container {
+	background-color: blue;
+}
