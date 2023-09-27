@@ -12,6 +12,7 @@
 	--dark-navy: rgba(26, 42, 51, 1);
 	--semi-dark-navy: rgba(31, 54, 65, 1);
 	--silver: rgba(168, 191, 201, 1);
+	--silver2: rgba(168, 191, 201, 0.5);
 	--silver-active: rgba(219, 232, 237, 1);
 }
 
@@ -48,8 +49,7 @@ body {
 }
 
 .logos {
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto auto 2rem auto;
 }
 
 .logos img {
@@ -57,5 +57,38 @@ body {
 }
 
 .game-container {
-	background-color: blue;
+	background-color: var(--semi-dark-navy);
+	width: 20.5rem;
+	margin-right: auto;
+	margin-left: auto;
+	box-shadow: 0px 8px 0 0 #10212a;
+	border-radius: 15px;
+	text-align: center;
+}
+
+.game-container h1 {
+	font-size: 1rem;
+	color: var(--silver);
+	padding: 2rem;
+}
+
+.game-container h2 {
+	font-size: 0.875rem;
+	margin-bottom: 1.5rem;
+	font-weight: 500;
+	color: var(--silver2);
+}
+
+.mark-options {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: auto 1.5rem 1rem 1.5rem;
+	background-color: var(--dark-navy);
+	padding: 1rem;
+	border-radius: 10px;
+}
+
+.mark-options img {
+	width: 3rem;
 }
