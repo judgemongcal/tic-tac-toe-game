@@ -534,145 +534,19 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-:root {
-  --green: rgba(49, 195, 189, 1);
-  --green-active: rgba(101, 233, 228, 1);
-  --yellow: rgba(242, 177, 55, 1);
-  --yellow-active: rgba(255, 200, 96, 1);
-  --dark-navy: rgba(26, 42, 51, 1);
-  --semi-dark-navy: rgba(31, 54, 65, 1);
-  --silver: rgba(168, 191, 201, 1);
-  --silver2: rgba(168, 191, 201, 0.5);
-  --silver-active: rgba(219, 232, 237, 1);
+.m-10 {
+  margin: 2.5rem;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.bg-violet-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(167 139 250 / var(--tw-bg-opacity));
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin: 0;
-  padding: 0;
-  font-family: "Outfit", sans-serif;
-}
-
-body {
-  background-color: var(--dark-navy);
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30%;
-}
-
-.logos {
-  margin: auto auto 2rem auto;
-}
-
-.logos img {
-  width: 6rem;
-}
-
-.game-container {
-  background-color: var(--semi-dark-navy);
-  width: 20.5rem;
-  margin-right: auto;
-  margin-left: auto;
-  box-shadow: 0px 8px 0 0 #10212a;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.game-container h1 {
-  font-size: 1rem;
-  color: var(--silver);
+.p-8 {
   padding: 2rem;
-  letter-spacing: 1px;
 }
 
-.game-container h2 {
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-  color: var(--silver2);
-  letter-spacing: 0.88px;
-}
-
-.mark-options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: auto 1.5rem 1rem 1.5rem;
-  background-color: var(--dark-navy);
-  padding: 0.75rem 0.75rem;
-  border-radius: 10px;
-  gap: 5px;
-}
-
-.mark-options img {
-  width: 2rem;
-}
-
-.x-option,
-.o-option {
-  padding: 0.75rem 2.85rem;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.x-option:hover {
-  background-color: var(--silver);
-}
-
-.o-option:hover {
-  background-color: var(--silver);
-}
-
-.buttons {
-  margin: 3rem auto 3rem auto;
-  display: flex;
-  flex-direction: column;
-  width: 20.5rem;
-}
-
-.buttons button {
-  padding: 1rem;
-  border: none;
-  border-radius: 15px;
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.cpu {
-  background-color: var(--yellow);
-  box-shadow: 0px 8px 0 0 #cc8b13;
-  transition: background-color 0.3s ease;
-}
-
-.cpu:hover {
-  background-color: var(--yellow-active);
-}
-
-.player {
-  background-color: var(--green);
-  box-shadow: 0px 8px 0 0 #118c87;
-  transition: background-color 0.3s ease;
-}
-
-.player:hover {
-  background-color: var(--green-active);
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

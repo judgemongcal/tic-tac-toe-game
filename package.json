@@ -1,8 +1,16 @@
 {
+	"name": "tailwindcss-cli-template",
+	"version": "1.0.0",
+	"description": "A file structure template for using TailwindCSS. Installed using CLI.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
 	"devDependencies": {
 		"tailwindcss": "^3.3.3"
-	},
-	"scripts": {
-		"dev": "tailwindcss -i ./assets/css/src/input.css -o ./dist/output.css --watch"
 	}
 }
