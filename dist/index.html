@@ -14,19 +14,30 @@
 		<title>Tic Tac Toe</title>
 	</head>
 	<body class="font-outfit bg-dark-navy flex flex-col mt-12 items-center">
-		<div class="logo flex justify-center w-11 mx-auto -mb-5">
+		<div class="logo flex justify-center w-16 mx-auto -mb-5">
 			<img src="../assets/images/logo.svg" alt="" class="src" />
 		</div>
-		<div class="p-16 m-10 flex flex-col justify-center bg-semi-dark-navy">
-			<h1 class="text-xs text-silver -mt-5">PICK PLAYER 1'S MARK</h1>
-			<div class="game-options flex flex-row justify-center gap-12 mt-5">
-				<div class="x-option">
-					<img src="../assets/images/icon-x.svg" alt="" class="w-5" />
+		<div
+			class="game-container shadow-navy-shadow p-6 pt-10 m-10 flex flex-col justify-center bg-semi-dark-navy text-center rounded-2xl"
+		>
+			<h1 class="text-[16px] text-silver -mt-5 font-bold tracking-wider">
+				PICK PLAYER 1'S MARK
+			</h1>
+			<div
+				class="game-options flex flex-row justify-center gap-16 mt-5 bg-dark-navy px-16 py-3.5 rounded-lg"
+			>
+				<div class="x-option w-12 p-1">
+					<img src="../assets/images/icon-x.svg" alt="" class="" />
 				</div>
-				<div class="o-option">
-					<img src="../assets/images/icon-o.svg" alt="" class="w-5" />
+				<div class="o-option w-12 p-1">
+					<img src="../assets/images/icon-o.svg" alt="" class="" />
 				</div>
 			</div>
+			<h1
+				class="text-[12px] text-silver text-opacity-70 mt-4 mb-0 font-medium tracking-widest"
+			>
+				REMEMBER: X GOES FIRST
+			</h1>
 		</div>
 	</body>
 </html>

@@ -16,6 +16,9 @@ module.exports = {
 			"light-yellow": "#F2B137",
 			"light-yellow-hover": "#FFC860",
 		},
+		boxShadow: {
+			"navy-shadow": "0px 8px 0px 0px #10212A",
+		},
 	},
 	plugins: [],
 };
