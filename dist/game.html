@@ -13,5 +13,18 @@
 		<script src="app.js" defer></script>
 		<title>Tic Tac Toe</title>
 	</head>
-	<body></body>
+	<body class="font-outfit bg-dark-navy flex flex-col mt-12 items-center">
+		<div class="header flex flex-row gap-16 items-center mx-5">
+			<img src="../assets/images/logo.svg" alt="" class="w-13 h-8" />
+			<div
+				class="player-turn flex flex-row gap-2 bg-semi-dark-navy items-center py-1 px-[1rem] justify-around rounded-md shadow-navy-shadow-sm"
+			>
+				<img src="../assets/images/icon-x.svg" alt="" class="h-4 fill-silver" />
+				<h1 class="text-silver tracking-[0.88px]">TURN</h1>
+			</div>
+			<button class="reset bg-silver rounded-md shadow-silver-shadow-sm">
+				<img src="../assets/images/icon-restart.svg" alt="" class="p-3 w-10" />
+			</button>
+		</div>
+	</body>
 </html>
