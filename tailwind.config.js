@@ -18,6 +18,8 @@ module.exports = {
 		},
 		boxShadow: {
 			"navy-shadow": "0px 8px 0px 0px #10212A",
+			"yellow-shadow": "0px 8px 0px 0px #CC8B13",
+			"light-blue-shadow": "0px 8px 0px 0px #118C87",
 		},
 	},
 	plugins: [],
