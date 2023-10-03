@@ -595,6 +595,18 @@ video {
   margin-top: 4rem;
 }
 
+.-mb-1{
+  margin-bottom: -0.25rem;
+}
+
+.-mb-2{
+  margin-bottom: -0.5rem;
+}
+
+.-mb-1\.5{
+  margin-bottom: -0.375rem;
+}
+
 .flex{
   display: flex;
 }
@@ -772,6 +784,14 @@ video {
   padding: 0.5rem;
 }
 
+.p-10{
+  padding: 2.5rem;
+}
+
+.p-2\.5{
+  padding: 0.625rem;
+}
+
 .px-16{
   padding-left: 4rem;
   padding-right: 4rem;
@@ -832,12 +852,24 @@ video {
   font-size: 16px;
 }
 
+.text-\[20px\]{
+  font-size: 20px;
+}
+
+.text-\[14px\]{
+  font-size: 14px;
+}
+
 .font-bold{
   font-weight: 700;
 }
 
 .font-medium{
   font-weight: 500;
+}
+
+.font-\[20px\]{
+  font-weight: 20px;
 }
 
 .tracking-\[0\.88px\]{
