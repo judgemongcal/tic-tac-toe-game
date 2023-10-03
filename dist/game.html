@@ -14,19 +14,28 @@
 		<title>Tic Tac Toe</title>
 	</head>
 	<body class="font-outfit bg-dark-navy flex flex-col mt-12 items-center">
-		<div class="header flex flex-row gap-16 items-center mx-5">
+		<div
+			class="header grid grid-cols-3 gap-10 justify-center mx-5 items-center"
+		>
+			<!-- <div
+			class="header grid grid-cols-3 gap-16 items-center justify-center w-[335px]"
+		> -->
 			<img src="../assets/images/logo.svg" alt="" class="w-13 h-8" />
 			<div
-				class="player-turn flex flex-row gap-2 bg-semi-dark-navy items-center py-1 px-[1rem] justify-around rounded-md shadow-navy-shadow-sm"
+				class="player-turn justify-around flex flex-row px-4 py-2 gap-2 bg-semi-dark-navy items-center rounded-md shadow-navy-shadow-sm"
 			>
 				<img src="../assets/images/icon-x.svg" alt="" class="h-4 fill-silver" />
 				<h1 class="text-silver tracking-[0.88px]">TURN</h1>
 			</div>
-			<button class="reset bg-silver rounded-md shadow-silver-shadow-sm">
-				<img src="../assets/images/icon-restart.svg" alt="" class="p-3 w-10" />
+			<button
+				class="reset bg-silver rounded-md shadow-silver-shadow-sm p-3 ml-auto"
+			>
+				<img src="../assets/images/icon-restart.svg" alt="" class="w-4" />
 			</button>
 		</div>
-		<div class="game grid grid-cols-3 grid-rows-3 gap-[20px] mt-16 mx-5">
+		<div
+			class="game grid grid-cols-3 grid-rows-3 gap-[20px] mt-16 w-[335px] justify-center"
+		>
 			<!-- FIRST ROW -->
 			<div class="bg-semi-dark-navy rounded-[10px] p-4 shadow-navy-shadow">
 				<img src="../assets/images/icon-o.svg" alt="" class="p-3" />
