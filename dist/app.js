@@ -11,7 +11,7 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
     gameBoxArr.forEach((gameBox) => {
         const image = gameBox.querySelector("img");
         if (image) {
-            image.style.display = "none";
+            image.style.visibility = "hidden";
             console.log("clicked");
         }
         // gameBox.innerHTML = "";
@@ -34,4 +34,12 @@ gameBoxArr.forEach((gameBox) => {
         }
     });
 });
-// <img src="../assets/images/icon-o.svg" alt="" class="p-3" />
+const initGame = () => {
+    gameBoxArr.forEach((gameBox) => {
+        const image = gameBox.querySelector("img");
+        if (image) {
+            image.style.visibility = "hidden";
+        }
+    });
+};
+document.addEventListener("DOMContentLoaded", initGame);
