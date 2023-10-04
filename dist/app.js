@@ -1,9 +1,20 @@
 "use strict";
 const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn = document.querySelector(".reset");
+const global = {
+    isUserTurn: true,
+    userCurrentMark: "",
+    isUserWinner: false,
+    isDraw: false,
+};
 resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", function () {
     gameBoxArr.forEach((gameBox) => {
-        gameBox.innerHTML = "";
+        const image = gameBox.querySelector("img");
+        if (image) {
+            image.style.display = "none";
+            console.log("clicked");
+        }
+        // gameBox.innerHTML = "";
     });
 });
 gameBoxArr.forEach((gameBox) => {

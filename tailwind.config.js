@@ -23,6 +23,12 @@ module.exports = {
 			"yellow-shadow": "0px 8px 0px 0px #CC8B13",
 			"light-blue-shadow": "0px 8px 0px 0px #118C87",
 		},
+		width: {
+			gamebox: "140px",
+		},
+		height: {
+			gamebox: "140px",
+		},
 	},
 	plugins: [],
 };
