@@ -46,4 +46,4 @@ const initGame = (): void => {
 	});
 };
 
-document.addEventListener("DOMContentLoaded", initGame);
+initGame();
