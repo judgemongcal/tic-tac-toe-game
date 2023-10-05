@@ -1,12 +1,29 @@
 "use strict";
 const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn = document.querySelector(".reset");
+const optionX = document.querySelector(".x-option");
+const optionO = document.querySelector(".o-option");
 const global = {
     isUserTurn: true,
-    userCurrentMark: "",
+    userMark: "o",
+    oppMark: "",
     isUserWinner: false,
     isDraw: false,
 };
+// SET GAME MARKS
+const initMarks = () => {
+    optionX === null || optionX === void 0 ? void 0 : optionX.addEventListener("click", function () {
+        global.userMark = "x";
+        global.oppMark = "o";
+        console.log(global.userMark, global.oppMark);
+    });
+    optionO === null || optionO === void 0 ? void 0 : optionO.addEventListener("click", function () {
+        global.userMark = "o";
+        global.oppMark = "x";
+        console.log(global.userMark, global.oppMark);
+    });
+};
+// RESET GAME
 resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", function () {
     gameBoxArr.forEach((gameBox) => {
         const image = gameBox.querySelector("img");
@@ -14,7 +31,6 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
             image.style.visibility = "hidden";
             console.log("clicked");
         }
-        // gameBox.innerHTML = "";
     });
 });
 gameBoxArr.forEach((gameBox) => {
@@ -41,5 +57,6 @@ const initGame = () => {
             image.style.visibility = "hidden";
         }
     });
+    initMarks();
 };
-document.addEventListener("DOMContentLoaded", initGame);
+initGame();
