@@ -13,23 +13,33 @@ const global = {
 // SET GAME MARKS
 const initMarks = () => {
     optionX === null || optionX === void 0 ? void 0 : optionX.addEventListener("click", function () {
-        if (optionO === null || optionO === void 0 ? void 0 : optionO.classList.contains("bg-silver")) {
-            optionO.classList.remove("bg-silver");
-        }
+        checkActive();
         optionX.classList.add("bg-silver");
         global.userMark = "x";
         global.oppMark = "o";
         console.log(global.userMark, global.oppMark);
     });
     optionO === null || optionO === void 0 ? void 0 : optionO.addEventListener("click", function () {
-        if (optionX === null || optionX === void 0 ? void 0 : optionX.classList.contains("bg-silver")) {
-            optionX.classList.remove("bg-silver");
-        }
+        checkActive();
         optionO.classList.add("bg-silver");
         global.userMark = "o";
         global.oppMark = "x";
         console.log(global.userMark, global.oppMark);
     });
+};
+const checkActive = () => {
+    switch (global.userMark) {
+        case "o":
+            if (optionO === null || optionO === void 0 ? void 0 : optionO.classList.contains("bg-silver")) {
+                optionO.classList.remove("bg-silver");
+            }
+            break;
+        case "x":
+            if (optionX === null || optionX === void 0 ? void 0 : optionX.classList.contains("bg-silver")) {
+                optionX.classList.remove("bg-silver");
+            }
+            break;
+    }
 };
 // RESET GAME
 resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", function () {

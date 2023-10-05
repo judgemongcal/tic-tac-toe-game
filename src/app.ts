@@ -14,23 +14,34 @@ const global = {
 // SET GAME MARKS
 const initMarks = () => {
 	optionX?.addEventListener("click", function () {
-		if (optionO?.classList.contains("bg-silver")) {
-			optionO.classList.remove("bg-silver");
-		}
+		checkActive();
 		optionX.classList.add("bg-silver");
 		global.userMark = "x";
 		global.oppMark = "o";
 		console.log(global.userMark, global.oppMark);
 	});
 	optionO?.addEventListener("click", function () {
-		if (optionX?.classList.contains("bg-silver")) {
-			optionX.classList.remove("bg-silver");
-		}
+		checkActive();
 		optionO.classList.add("bg-silver");
 		global.userMark = "o";
 		global.oppMark = "x";
 		console.log(global.userMark, global.oppMark);
 	});
+};
+
+const checkActive = () => {
+	switch (global.userMark) {
+		case "o":
+			if (optionO?.classList.contains("bg-silver")) {
+				optionO.classList.remove("bg-silver");
+			}
+			break;
+		case "x":
+			if (optionX?.classList.contains("bg-silver")) {
+				optionX.classList.remove("bg-silver");
+			}
+			break;
+	}
 };
 
 // RESET GAME
