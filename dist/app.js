@@ -16,14 +16,14 @@ const initMarks = () => {
     optionX === null || optionX === void 0 ? void 0 : optionX.addEventListener("click", function () {
         checkActive();
         optionX.classList.add("bg-silver");
-        localStorage.setTime("userMark", "x");
-        localStorage.setTime("oppMark", "o");
+        localStorage.setItem("userMark", "x");
+        localStorage.setItem("oppMark", "o");
     });
     optionO === null || optionO === void 0 ? void 0 : optionO.addEventListener("click", function () {
         checkActive();
         optionO.classList.add("bg-silver");
-        localStorage.setTime("userMark", "o");
-        localStorage.setTime("oppMark", "x");
+        localStorage.setItem("userMark", "o");
+        localStorage.setItem("oppMark", "x");
     });
 };
 const assignMarks = () => {
@@ -85,10 +85,13 @@ const InitApp = () => {
     switch (window.location.pathname) {
         case "/dist/index.html":
             console.log("Index");
+            initMarks();
             break;
         case "/dist/game.html":
             console.log("Game");
             initGame();
+            assignMarks();
+            console.log(global);
             break;
     }
 };

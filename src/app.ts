@@ -24,14 +24,14 @@ const initMarks = () => {
 	optionX?.addEventListener("click", function () {
 		checkActive();
 		optionX.classList.add("bg-silver");
-		localStorage.setTime("userMark", "x");
-		localStorage.setTime("oppMark", "o");
+		localStorage.setItem("userMark", "x");
+		localStorage.setItem("oppMark", "o");
 	});
 	optionO?.addEventListener("click", function () {
 		checkActive();
 		optionO.classList.add("bg-silver");
-		localStorage.setTime("userMark", "o");
-		localStorage.setTime("oppMark", "x");
+		localStorage.setItem("userMark", "o");
+		localStorage.setItem("oppMark", "x");
 	});
 };
 
@@ -99,10 +99,13 @@ const InitApp = (): void => {
 	switch (window.location.pathname) {
 		case "/dist/index.html":
 			console.log("Index");
+			initMarks();
 			break;
 		case "/dist/game.html":
 			console.log("Game");
 			initGame();
+			assignMarks();
+			console.log(global);
 			break;
 	}
 };
