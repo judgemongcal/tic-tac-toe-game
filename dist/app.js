@@ -3,6 +3,7 @@ const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn = document.querySelector(".reset");
 const optionX = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
+const turnMarker = document.querySelector(".turn-img");
 const global = {
     isUserTurn: true,
     userMark: "",
@@ -70,8 +71,14 @@ gameBoxArr.forEach((gameBox) => {
             `;
             global.isUserTurn = true;
         }
+        checkTurn();
     });
 });
+const checkTurn = () => {
+    global.isUserTurn
+        ? turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.userMark}.svg`)
+        : turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.oppMark}.svg`);
+};
 const initGame = () => {
     gameBoxArr.forEach((gameBox) => {
         const image = gameBox.querySelector("img");
