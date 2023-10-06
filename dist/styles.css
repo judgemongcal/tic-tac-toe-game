@@ -623,6 +623,10 @@ video {
   width: 335px;
 }
 
+.w-\[20px\]{
+  width: 20px;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -738,6 +742,10 @@ video {
 
 .p-6{
   padding: 1.5rem;
+}
+
+.p-10{
+  padding: 2.5rem;
 }
 
 .px-4{
@@ -860,11 +868,6 @@ video {
 .hover\:bg-navy-hover:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(33 49 58 / var(--tw-bg-opacity));
-}
-
-.focus\:bg-silver:focus{
-  --tw-bg-opacity: 1;
-  background-color: rgb(168 191 201 / var(--tw-bg-opacity));
 }
 
 .active\:bg-silver:active{

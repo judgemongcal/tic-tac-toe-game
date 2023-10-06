@@ -3,30 +3,41 @@ const resetBtn = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
 
-const global = {
+type Global = {
+	isUserTurn: boolean;
+	userMark: string;
+	oppMark: string;
+	isUserWinner: boolean;
+	isDraw: boolean;
+};
+const global: Global = {
 	isUserTurn: true,
-	userMark: "o",
+	userMark: "",
 	oppMark: "",
 	isUserWinner: false,
 	isDraw: false,
 };
 
+// -------------- INDEX
 // SET GAME MARKS
 const initMarks = () => {
 	optionX?.addEventListener("click", function () {
 		checkActive();
 		optionX.classList.add("bg-silver");
-		global.userMark = "x";
-		global.oppMark = "o";
-		console.log(global.userMark, global.oppMark);
+		localStorage.setTime("userMark", "x");
+		localStorage.setTime("oppMark", "o");
 	});
 	optionO?.addEventListener("click", function () {
 		checkActive();
 		optionO.classList.add("bg-silver");
-		global.userMark = "o";
-		global.oppMark = "x";
-		console.log(global.userMark, global.oppMark);
+		localStorage.setTime("userMark", "o");
+		localStorage.setTime("oppMark", "x");
 	});
+};
+
+const assignMarks = (): void => {
+	global.userMark = localStorage.getItem("userMark") || "";
+	global.oppMark = localStorage.getItem("oppMark") || "";
 };
 
 const checkActive = () => {
@@ -44,6 +55,8 @@ const checkActive = () => {
 	}
 };
 
+// -------------- GAME
+
 // RESET GAME
 resetBtn?.addEventListener("click", function () {
 	gameBoxArr.forEach((gameBox) => {
@@ -58,16 +71,16 @@ resetBtn?.addEventListener("click", function () {
 gameBoxArr.forEach((gameBox) => {
 	gameBox?.addEventListener("click", function () {
 		gameBox.innerHTML = "";
-		if (gameBox.id === "x-mark") {
-			console.log("X");
+		if (global.isUserTurn) {
 			gameBox.innerHTML = `
-            <img src="../assets/images/icon-x.svg" alt="" class="p-3" />
+            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3" />
             `;
+			global.isUserTurn = false;
 		} else {
-			console.log("O");
 			gameBox.innerHTML = `
-            <img src="../assets/images/icon-o.svg" alt="" class="p-3" />
+            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" />
             `;
+			global.isUserTurn = true;
 		}
 	});
 });
@@ -79,7 +92,19 @@ const initGame = (): void => {
 			image.style.visibility = "hidden";
 		}
 	});
-	initMarks();
 };
 
-initGame();
+// Router
+const InitApp = (): void => {
+	switch (window.location.pathname) {
+		case "/dist/index.html":
+			console.log("Index");
+			break;
+		case "/dist/game.html":
+			console.log("Game");
+			initGame();
+			break;
+	}
+};
+
+InitApp();
