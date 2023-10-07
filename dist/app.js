@@ -9,6 +9,7 @@ const global = {
     userMark: "",
     oppMark: "",
     isUserWinner: false,
+    isOppWinner: false,
     isDraw: false,
 };
 // -------------- INDEX
@@ -61,23 +62,77 @@ gameBoxArr.forEach((gameBox) => {
         gameBox.innerHTML = "";
         if (global.isUserTurn) {
             gameBox.innerHTML = `
-            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3" id="${global.userMark}" />
+            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3"/>
             `;
+            gameBox.id = `${global.userMark}-mark`;
             global.isUserTurn = false;
         }
         else {
             gameBox.innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id="${global.oppMark}"/>
             `;
+            gameBox.id = `${global.oppMark}-mark`;
             global.isUserTurn = true;
         }
         checkTurn();
+        checkWinner();
     });
 });
 const checkTurn = () => {
     global.isUserTurn
         ? turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.userMark}.svg`)
         : turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.oppMark}.svg`);
+};
+const checkWinner = () => {
+    // First Row
+    if (gameBoxArr[0].id === gameBoxArr[1].id &&
+        gameBoxArr[1].id === gameBoxArr[2].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+        console.log("1st Row Win");
+    }
+    else if (
+    // Second Row
+    gameBoxArr[3].id === gameBoxArr[4].id &&
+        gameBoxArr[3].id === gameBoxArr[5].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+        console.log("2nd Row Win");
+    }
+    else if (
+    // Third Row
+    gameBoxArr[6].id === gameBoxArr[7].id &&
+        gameBoxArr[6].id === gameBoxArr[8].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+    }
+    else if (
+    // First Column
+    gameBoxArr[0].id === gameBoxArr[3].id &&
+        gameBoxArr[0].id === gameBoxArr[6].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+    }
+    else if (
+    // Second Column
+    gameBoxArr[1].id === gameBoxArr[4].id &&
+        gameBoxArr[1].id === gameBoxArr[7].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+    }
+    else if (
+    // Third Column
+    gameBoxArr[2].id === gameBoxArr[5].id &&
+        gameBoxArr[2].id === gameBoxArr[8].id) {
+        gameBoxArr[0].id === global.userMark
+            ? (global.isUserWinner = true)
+            : (global.isOppWinner = false);
+    }
 };
 const initGame = () => {
     gameBoxArr.forEach((gameBox) => {
