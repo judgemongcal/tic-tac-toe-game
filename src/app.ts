@@ -68,6 +68,9 @@ resetBtn?.addEventListener("click", function () {
 			image.style.visibility = "hidden";
 			console.log("clicked");
 		}
+		gameBox.id = "";
+		global.isUserWinner = false;
+		global.isOppWinner = false;
 	});
 });
 
@@ -105,56 +108,132 @@ const checkTurn = (): void => {
 };
 
 const checkWinner = (): void => {
-	// First Row
+	// console.log(gameBoxArr[0].id, gameBoxArr[1].id, gameBoxArr[2].id);
+	// console.log(gameBoxArr[3].id, gameBoxArr[4].id, gameBoxArr[5].id);
+	// console.log(gameBoxArr[6].id, gameBoxArr[7].id, gameBoxArr[8].id);
+
 	if (
+		// First Row
+		gameBoxArr[0].id != "" &&
 		gameBoxArr[0].id === gameBoxArr[1].id &&
 		gameBoxArr[1].id === gameBoxArr[2].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
-		console.log("1st Row Win");
+		console.log("First Row Win");
+		if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
 	} else if (
 		// Second Row
+		gameBoxArr[3].id != "" &&
 		gameBoxArr[3].id === gameBoxArr[4].id &&
 		gameBoxArr[3].id === gameBoxArr[5].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
-		console.log("2nd Row Win");
+		console.log("Second Row Win");
+		if (gameBoxArr[3].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
 	} else if (
 		// Third Row
+		gameBoxArr[6].id != "" &&
 		gameBoxArr[6].id === gameBoxArr[7].id &&
 		gameBoxArr[6].id === gameBoxArr[8].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
+		console.log("Third Row Win");
+		if (gameBoxArr[6].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
 	} else if (
-		// First Column
+		// First Col
+		gameBoxArr[0].id != "" &&
 		gameBoxArr[0].id === gameBoxArr[3].id &&
 		gameBoxArr[0].id === gameBoxArr[6].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
+		console.log("First Col Win");
+		if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
 	} else if (
-		// Second Column
+		// Second Col
+		gameBoxArr[1].id != "" &&
 		gameBoxArr[1].id === gameBoxArr[4].id &&
 		gameBoxArr[1].id === gameBoxArr[7].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
+		console.log("Second Col Win");
+		if (gameBoxArr[1].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
 	} else if (
-		// Third Column
+		// Third Col
+		gameBoxArr[2].id != "" &&
 		gameBoxArr[2].id === gameBoxArr[5].id &&
 		gameBoxArr[2].id === gameBoxArr[8].id
 	) {
-		gameBoxArr[0].id === global.userMark
-			? (global.isUserWinner = true)
-			: (global.isOppWinner = false);
+		console.log("Third Col Win");
+		if (gameBoxArr[2].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
+	} else if (
+		// Left to Right Diagonal
+		gameBoxArr[0].id != "" &&
+		gameBoxArr[0].id === gameBoxArr[4].id &&
+		gameBoxArr[0].id === gameBoxArr[8].id
+	) {
+		console.log("Left to Right Diagonal Win");
+		if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
+	} else if (
+		// Right to Left Diagonal
+		gameBoxArr[2].id != "" &&
+		gameBoxArr[2].id === gameBoxArr[4].id &&
+		gameBoxArr[2].id === gameBoxArr[6].id
+	) {
+		console.log("Right to Left Diagonal Win");
+		if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+			global.isUserWinner = true;
+			global.isOppWinner = false;
+		} else {
+			global.isUserWinner = false;
+			global.isOppWinner = true;
+		}
+	}
+
+	GetWinner();
+};
+
+const GetWinner = (): void => {
+	if (global.isUserWinner) {
+		console.log("Player 1 Wins!");
+	} else if (global.isOppWinner) {
+		console.log("Player 2 Wins");
 	}
 };
 
@@ -178,7 +257,6 @@ const InitApp = (): void => {
 			console.log("Game");
 			initGame();
 			assignMarks();
-			console.log(global);
 			break;
 	}
 };
