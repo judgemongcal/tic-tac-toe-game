@@ -61,13 +61,13 @@ gameBoxArr.forEach((gameBox) => {
         gameBox.innerHTML = "";
         if (global.isUserTurn) {
             gameBox.innerHTML = `
-            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3" />
+            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3" id="${global.userMark}" />
             `;
             global.isUserTurn = false;
         }
         else {
             gameBox.innerHTML = `
-            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" />
+            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id="${global.oppMark}"/>
             `;
             global.isUserTurn = true;
         }

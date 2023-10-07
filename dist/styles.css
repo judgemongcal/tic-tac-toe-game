@@ -615,16 +615,16 @@ video {
   display: none;
 }
 
+.w-\[20px\]{
+  width: 20px;
+}
+
 .w-\[32px\]{
   width: 32px;
 }
 
 .w-\[335px\]{
   width: 335px;
-}
-
-.w-\[20px\]{
-  width: 20px;
 }
 
 .cursor-pointer{
@@ -742,10 +742,6 @@ video {
 
 .p-6{
   padding: 1.5rem;
-}
-
-.p-10{
-  padding: 2.5rem;
 }
 
 .px-4{
