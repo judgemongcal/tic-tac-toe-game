@@ -95,6 +95,7 @@ gameBoxArr.forEach((gameBox) => {
 	});
 });
 
+// CHECK TURN
 const checkTurn = (): void => {
 	global.isUserTurn
 		? turnMarker?.setAttribute(
@@ -107,11 +108,8 @@ const checkTurn = (): void => {
 		  );
 };
 
+// CHECK WINNER
 const checkWinner = (): void => {
-	// console.log(gameBoxArr[0].id, gameBoxArr[1].id, gameBoxArr[2].id);
-	// console.log(gameBoxArr[3].id, gameBoxArr[4].id, gameBoxArr[5].id);
-	// console.log(gameBoxArr[6].id, gameBoxArr[7].id, gameBoxArr[8].id);
-
 	if (
 		// First Row
 		gameBoxArr[0].id != "" &&
@@ -229,6 +227,7 @@ const checkWinner = (): void => {
 	GetWinner();
 };
 
+// DISPLAY WINNER
 const GetWinner = (): void => {
 	if (global.isUserWinner) {
 		console.log("Player 1 Wins!");

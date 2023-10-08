@@ -627,6 +627,10 @@ video {
   width: 335px;
 }
 
+.w-\[21rem\]{
+  width: 21rem;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -869,4 +873,18 @@ video {
 .active\:bg-silver:active{
   --tw-bg-opacity: 1;
   background-color: rgb(168 191 201 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 768px){
+  .md\:w-\[460px\]{
+    width: 460px;
+  }
+
+  .md\:w-\[30rem\]{
+    width: 30rem;
+  }
+
+  .md\:w-\[25rem\]{
+    width: 25rem;
+  }
 }
