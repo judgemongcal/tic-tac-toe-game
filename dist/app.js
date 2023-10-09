@@ -11,6 +11,9 @@ const global = {
     isUserWinner: false,
     isOppWinner: false,
     isDraw: false,
+    userScore: 0,
+    oppScore: 0,
+    drawScore: 0,
 };
 // -------------- INDEX
 // SET GAME MARKS
@@ -58,6 +61,7 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
         gameBox.id = "";
         global.isUserWinner = false;
         global.isOppWinner = false;
+        global.isDraw = false;
     });
 });
 gameBoxArr.forEach((gameBox) => {
@@ -81,15 +85,14 @@ gameBoxArr.forEach((gameBox) => {
         checkWinner();
     });
 });
+// CHECK TURN
 const checkTurn = () => {
     global.isUserTurn
         ? turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.userMark}.svg`)
         : turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.oppMark}.svg`);
 };
+// CHECK WINNER
 const checkWinner = () => {
-    // console.log(gameBoxArr[0].id, gameBoxArr[1].id, gameBoxArr[2].id);
-    // console.log(gameBoxArr[3].id, gameBoxArr[4].id, gameBoxArr[5].id);
-    // console.log(gameBoxArr[6].id, gameBoxArr[7].id, gameBoxArr[8].id);
     if (
     // First Row
     gameBoxArr[0].id != "" &&
@@ -210,15 +213,42 @@ const checkWinner = () => {
             global.isOppWinner = true;
         }
     }
+    else {
+        global.isUserWinner = false;
+        global.isOppWinner = false;
+        global.isDraw = true;
+    }
+    // if (isGameOver()) {
     GetWinner();
+    // }
 };
+const isGameOver = () => {
+    let gameDone;
+    gameBoxArr.forEach((gameBox) => {
+        gameBox.id ? (gameDone = true) : (gameDone = false); // Need to improve this
+    });
+    if (gameDone) {
+        global.isUserWinner = false;
+        global.isOppWinner = false;
+        global.isDraw = true;
+    }
+    return gameDone;
+};
+// DISPLAY WINNER
 const GetWinner = () => {
     if (global.isUserWinner) {
         console.log("Player 1 Wins!");
+        global.userScore++;
     }
     else if (global.isOppWinner) {
-        console.log("Player 2 Wins");
+        console.log("Player 2 Wins!");
+        global.oppScore++;
     }
+    else if (global.isDraw) {
+        console.log("Draw!");
+        global.drawScore++;
+    }
+    console.log(global);
 };
 const initGame = () => {
     gameBoxArr.forEach((gameBox) => {

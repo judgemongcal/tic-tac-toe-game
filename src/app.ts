@@ -11,6 +11,9 @@ type Global = {
 	isUserWinner: boolean;
 	isOppWinner: boolean;
 	isDraw: boolean;
+	userScore: number;
+	oppScore: number;
+	drawScore: number;
 };
 const global: Global = {
 	isUserTurn: true,
@@ -19,6 +22,9 @@ const global: Global = {
 	isUserWinner: false,
 	isOppWinner: false,
 	isDraw: false,
+	userScore: 0,
+	oppScore: 0,
+	drawScore: 0,
 };
 
 // -------------- INDEX
@@ -71,6 +77,7 @@ resetBtn?.addEventListener("click", function () {
 		gameBox.id = "";
 		global.isUserWinner = false;
 		global.isOppWinner = false;
+		global.isDraw = false;
 	});
 });
 
@@ -228,18 +235,37 @@ const checkWinner = (): void => {
 		global.isDraw = true;
 	}
 
+	// if (isGameOver()) {
 	GetWinner();
+	// }
+};
+
+const isGameOver = (): boolean => {
+	let gameDone: boolean;
+	gameBoxArr.forEach((gameBox) => {
+		gameBox.id ? (gameDone = true) : (gameDone = false); // Need to improve this
+	});
+	if (gameDone!) {
+		global.isUserWinner = false;
+		global.isOppWinner = false;
+		global.isDraw = true;
+	}
+	return gameDone!;
 };
 
 // DISPLAY WINNER
 const GetWinner = (): void => {
 	if (global.isUserWinner) {
 		console.log("Player 1 Wins!");
+		global.userScore++;
 	} else if (global.isOppWinner) {
 		console.log("Player 2 Wins!");
-	} else {
+		global.oppScore++;
+	} else if (global.isDraw) {
 		console.log("Draw!");
+		global.drawScore++;
 	}
+	console.log(global);
 };
 
 const initGame = (): void => {
