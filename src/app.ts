@@ -222,6 +222,10 @@ const checkWinner = (): void => {
 			global.isUserWinner = false;
 			global.isOppWinner = true;
 		}
+	} else {
+		global.isUserWinner = false;
+		global.isOppWinner = false;
+		global.isDraw = true;
 	}
 
 	GetWinner();
@@ -232,7 +236,9 @@ const GetWinner = (): void => {
 	if (global.isUserWinner) {
 		console.log("Player 1 Wins!");
 	} else if (global.isOppWinner) {
-		console.log("Player 2 Wins");
+		console.log("Player 2 Wins!");
+	} else {
+		console.log("Draw!");
 	}
 };
 
