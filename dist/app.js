@@ -252,6 +252,12 @@ const GetWinner = () => {
         global.drawScore++;
     }
     console.log(global);
+    updateScore();
+};
+const updateScore = () => {
+    userScoreEl.innerText = `${global.userScore}`;
+    oppScoreEl.innerText = `${global.oppScore}`;
+    drawScoreEl.innerText = `${global.drawScore}`;
 };
 const initGame = () => {
     gameBoxArr.forEach((gameBox) => {

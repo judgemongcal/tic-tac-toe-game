@@ -3,9 +3,12 @@ const resetBtn = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
 const turnMarker = document.querySelector(".turn-img");
-const userScoreEl = document.querySelector(".user-score");
-const drawScoreEl = document.querySelector(".draw-score");
-const oppScoreEl = document.querySelector(".opp-score");
+const userScoreEl: HTMLParagraphElement | null =
+	document.querySelector(".user-score");
+const drawScoreEl: HTMLParagraphElement | null =
+	document.querySelector(".draw-score");
+const oppScoreEl: HTMLParagraphElement | null =
+	document.querySelector(".opp-score");
 
 type Global = {
 	isUserTurn: boolean;
@@ -269,6 +272,13 @@ const GetWinner = (): void => {
 		global.drawScore++;
 	}
 	console.log(global);
+	updateScore();
+};
+
+const updateScore = (): void => {
+	userScoreEl!.innerText = `${global.userScore}`;
+	oppScoreEl!.innerText = `${global.oppScore}`;
+	drawScoreEl!.innerText = `${global.drawScore}`;
 };
 
 const initGame = (): void => {
