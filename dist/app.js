@@ -221,21 +221,24 @@ const checkWinner = () => {
         global.isOppWinner = false;
         global.isDraw = true;
     }
-    // if (isGameOver()) {
     GetWinner();
     // }
 };
 const isGameOver = () => {
-    let gameDone;
-    gameBoxArr.forEach((gameBox) => {
-        gameBox.id ? (gameDone = true) : (gameDone = false); // Need to improve this
-    });
-    if (gameDone) {
-        global.isUserWinner = false;
-        global.isOppWinner = false;
-        global.isDraw = true;
+    if (gameBoxArr[0].id != "" &&
+        gameBoxArr[1].id != "" &&
+        gameBoxArr[2].id != "" &&
+        gameBoxArr[3].id != "" &&
+        gameBoxArr[4].id != "" &&
+        gameBoxArr[5].id != "" &&
+        gameBoxArr[6].id != "" &&
+        gameBoxArr[7].id != "" &&
+        gameBoxArr[8].id != "") {
+        return true;
     }
-    return gameDone;
+    else {
+        return false;
+    }
 };
 // DISPLAY WINNER
 const GetWinner = () => {
@@ -247,7 +250,7 @@ const GetWinner = () => {
         console.log("Player 2 Wins!");
         global.oppScore++;
     }
-    else if (global.isDraw) {
+    else if (isGameOver()) {
         console.log("Draw!");
         global.drawScore++;
     }
