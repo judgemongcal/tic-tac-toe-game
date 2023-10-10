@@ -3,6 +3,9 @@ const resetBtn = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
 const turnMarker = document.querySelector(".turn-img");
+const userScoreEl = document.querySelector(".user-score");
+const drawScoreEl = document.querySelector(".draw-score");
+const oppScoreEl = document.querySelector(".opp-score");
 
 type Global = {
 	isUserTurn: boolean;

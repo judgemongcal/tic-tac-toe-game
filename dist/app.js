@@ -4,6 +4,9 @@ const resetBtn = document.querySelector(".reset");
 const optionX = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
 const turnMarker = document.querySelector(".turn-img");
+const userScoreEl = document.querySelector(".user-score");
+const drawScoreEl = document.querySelector(".draw-score");
+const oppScoreEl = document.querySelector(".opp-score");
 const global = {
     isUserTurn: true,
     userMark: "",
