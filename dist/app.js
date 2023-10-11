@@ -37,9 +37,11 @@ const initMarks = () => {
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
     global.oppMark = localStorage.getItem("oppMark") || "";
-    global.userScore = parseInt(localStorage.getItem("userScore") || "");
-    global.oppScore = parseInt(localStorage.getItem("oppScore") || "");
-    global.drawScore = parseInt(localStorage.getItem("drawScore") || "");
+};
+const fetchScores = () => {
+    global.userScore = Number(localStorage.getItem("userScore"));
+    global.oppScore = Number(localStorage.getItem("oppScore"));
+    global.drawScore = Number(localStorage.getItem("drawScore"));
 };
 const checkActive = () => {
     switch (global.userMark) {
@@ -286,6 +288,7 @@ const InitApp = () => {
         case "/dist/game.html":
             console.log("Game");
             initGame();
+            fetchScores();
             assignMarks();
             break;
     }
