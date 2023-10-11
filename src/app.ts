@@ -268,12 +268,15 @@ const GetWinner = (): void => {
 	if (global.isUserWinner) {
 		console.log("Player 1 Wins!");
 		global.userScore++;
+		localStorage.setItem("userScore", global.userScore.toString());
 	} else if (global.isOppWinner) {
 		console.log("Player 2 Wins!");
 		global.oppScore++;
+		localStorage.setItem("oppScore", global.oppScore.toString());
 	} else if (isGameOver()) {
 		console.log("Draw!");
 		global.drawScore++;
+		localStorage.setItem("drawScore", global.drawScore.toString());
 	}
 	console.log(global);
 	updateScore();
