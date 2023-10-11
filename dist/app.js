@@ -37,6 +37,9 @@ const initMarks = () => {
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
     global.oppMark = localStorage.getItem("oppMark") || "";
+    global.userScore = parseInt(localStorage.getItem("userScore") || "");
+    global.oppScore = parseInt(localStorage.getItem("oppScore") || "");
+    global.drawScore = parseInt(localStorage.getItem("drawScore") || "");
 };
 const checkActive = () => {
     switch (global.userMark) {
