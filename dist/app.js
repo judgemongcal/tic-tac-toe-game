@@ -42,6 +42,7 @@ const fetchScores = () => {
     global.userScore = Number(localStorage.getItem("userScore"));
     global.oppScore = Number(localStorage.getItem("oppScore"));
     global.drawScore = Number(localStorage.getItem("drawScore"));
+    updateScore();
 };
 const checkActive = () => {
     switch (global.userMark) {
@@ -70,6 +71,9 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
         global.isUserWinner = false;
         global.isOppWinner = false;
         global.isDraw = false;
+        global.userMark === "x"
+            ? (global.isUserTurn = true)
+            : (global.isUserTurn = false);
     });
 });
 gameBoxArr.forEach((gameBox) => {
@@ -289,6 +293,7 @@ const InitApp = () => {
             break;
         case "/dist/game.html":
             console.log("Game");
+            fetchScores();
             initGame();
             // fetchScores();
             // assignMarks();
