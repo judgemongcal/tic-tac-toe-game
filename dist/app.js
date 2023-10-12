@@ -74,6 +74,7 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
         global.userMark === "x"
             ? (global.isUserTurn = true)
             : (global.isUserTurn = false);
+        checkTurn();
     });
 });
 gameBoxArr.forEach((gameBox) => {

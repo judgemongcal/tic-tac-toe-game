@@ -94,6 +94,7 @@ resetBtn?.addEventListener("click", function () {
 		global.userMark === "x"
 			? (global.isUserTurn = true)
 			: (global.isUserTurn = false);
+		checkTurn();
 	});
 });
 
