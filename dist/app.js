@@ -277,6 +277,8 @@ const initGame = () => {
             image.style.visibility = "hidden";
         }
     });
+    assignMarks();
+    fetchScores();
 };
 // Router
 const InitApp = () => {
@@ -288,8 +290,8 @@ const InitApp = () => {
         case "/dist/game.html":
             console.log("Game");
             initGame();
-            fetchScores();
-            assignMarks();
+            // fetchScores();
+            // assignMarks();
             break;
     }
 };
