@@ -1,4 +1,6 @@
 "use strict";
+const cpuBtn = document.querySelector('.vs-cpu');
+const humanBtn = document.querySelector('.vs-human');
 const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn = document.querySelector(".reset");
 const optionX = document.querySelector(".x-option");
@@ -8,6 +10,7 @@ const userScoreEl = document.querySelector(".user-score");
 const drawScoreEl = document.querySelector(".draw-score");
 const oppScoreEl = document.querySelector(".opp-score");
 const global = {
+    isOpponentHuman: true,
     isUserTurn: true,
     userMark: "",
     oppMark: "",
@@ -33,6 +36,16 @@ const initMarks = () => {
         localStorage.setItem("userMark", "o");
         localStorage.setItem("oppMark", "x");
     });
+    cpuBtn === null || cpuBtn === void 0 ? void 0 : cpuBtn.addEventListener('click', function () {
+        localStorage.setItem('isOppHuman', 'false');
+        console.log('CPU');
+    });
+    humanBtn === null || humanBtn === void 0 ? void 0 : humanBtn.addEventListener('click', function () {
+        localStorage.setItem('isOppHuman', 'true');
+        console.log('HUMAN');
+    });
+};
+const checkOpp = () => {
 };
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
@@ -291,6 +304,7 @@ const InitApp = () => {
         case "/dist/index.html":
             console.log("Index");
             initMarks();
+            checkOpp();
             break;
         case "/dist/game.html":
             console.log("Game");
