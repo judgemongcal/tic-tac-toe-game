@@ -1,5 +1,5 @@
 const cpuBtn = document.querySelector('.vs-cpu');
-const humanBtn = document.querySelector('.vs-human');
+const humanBtn = document.querySelector('.vs-player');
 const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
@@ -54,16 +54,14 @@ const initMarks = () => {
 	});
 	cpuBtn?.addEventListener('click', function (){
 		localStorage.setItem('isOppHuman', 'false');
-		console.log('CPU');
 	})
 	humanBtn?.addEventListener('click', function(){
 		localStorage.setItem('isOppHuman', 'true');
-		console.log('HUMAN');
 	})
 };
 
 const checkOpp = () => {
-
+	global.isOpponentHuman = Boolean(localStorage.getItem('isOppHuman') || "");
 };
 
 const assignMarks = (): void => {
