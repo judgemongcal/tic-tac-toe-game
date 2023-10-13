@@ -13,7 +13,7 @@ const oppScoreEl: HTMLParagraphElement | null =
 	document.querySelector(".opp-score");
 
 type Global = {
-	isOpponentHuman: boolean;
+	isOpponentHuman:boolean;
 	isUserTurn: boolean;
 	userMark: string;
 	oppMark: string;
@@ -25,7 +25,7 @@ type Global = {
 	drawScore: number;
 };
 const global: Global = {
-	isOpponentHuman: true,
+	isOpponentHuman: false,
 	isUserTurn: true,
 	userMark: "",
 	oppMark: "",
@@ -61,7 +61,8 @@ const initMarks = () => {
 };
 
 const checkOpp = () => {
-	global.isOpponentHuman = Boolean(localStorage.getItem('isOppHuman') || "");
+	global.isOpponentHuman = JSON.parse((localStorage.getItem('isOppHuman') || ""));
+	console.log(global.isOpponentHuman);
 };
 
 const assignMarks = (): void => {
@@ -330,12 +331,13 @@ const InitApp = (): void => {
 		case "/dist/index.html":
 			console.log("Index");
 			initMarks();
-			checkOpp();
+			
 			break;
 		case "/dist/game.html":
 			console.log("Game");
 			fetchScores();
 			initGame();
+			checkOpp();
 			// fetchScores();
 			// assignMarks();
 			break;
