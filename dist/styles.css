@@ -619,16 +619,16 @@ video {
   width: 20px;
 }
 
+.w-\[21rem\]{
+  width: 21rem;
+}
+
 .w-\[32px\]{
   width: 32px;
 }
 
 .w-\[335px\]{
   width: 335px;
-}
-
-.w-\[21rem\]{
-  width: 21rem;
 }
 
 .cursor-pointer{
@@ -665,10 +665,6 @@ video {
 
 .gap-10{
   gap: 2.5rem;
-}
-
-.gap-16{
-  gap: 4rem;
 }
 
 .gap-2{
@@ -876,14 +872,6 @@ video {
 }
 
 @media (min-width: 768px){
-  .md\:w-\[460px\]{
-    width: 460px;
-  }
-
-  .md\:w-\[30rem\]{
-    width: 30rem;
-  }
-
   .md\:w-\[25rem\]{
     width: 25rem;
   }

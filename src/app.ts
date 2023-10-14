@@ -115,24 +115,63 @@ resetBtn?.addEventListener("click", function () {
 
 gameBoxArr.forEach((gameBox) => {
 	gameBox?.addEventListener("click", function () {
+		if(gameBox.id){
+			console.log('Invalid Move');
+		} else{
 		gameBox.innerHTML = "";
 		if (global.isUserTurn) {
 			gameBox.innerHTML = `
-            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3"/>
+            <img src="../assets/images/icon-${global.userMark}.svg" alt="" class="p-3" id=""/>
             `;
 			gameBox.id = `${global.userMark}-mark`;
 			global.isUserTurn = false;
+			
+			
+			
 		} else {
+		
 			gameBox.innerHTML = `
-            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id="${global.oppMark}"/>
+            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3"/>
             `;
 			gameBox.id = `${global.oppMark}-mark`;
 			global.isUserTurn = true;
+			
 		}
+	}
 		checkTurn();
 		checkWinner();
+		if(!global.isOpponentHuman){
+			cpuMove();
+		}
+	
 	});
 });
+
+const generateRandomNum = () : number => {
+	const numOfBoxes = gameBoxArr.length;
+	const random = Math.abs(Math.floor(Math.random() * numOfBoxes-1));
+	return random;
+}
+
+const cpuMove = (attempts = 0): void => {
+	if (attempts >= 10){
+		return;
+	}
+	const randomNum = generateRandomNum();
+	console.log(randomNum);
+	if(gameBoxArr[randomNum].id){
+		cpuMove(attempts + 1);
+	} else{
+		gameBoxArr[randomNum].innerHTML = `
+            <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id=""/>
+            `;
+		gameBoxArr[randomNum].id = `${global.oppMark}-mark`;
+		global.isUserTurn = true;
+		checkTurn();
+		checkWinner();
+	}
+	
+} 
 
 // CHECK TURN
 const checkTurn = (): void => {
