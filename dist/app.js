@@ -91,21 +91,21 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener('c
     });
 });
 const reset = () => {
-    // gameBoxArr.forEach((gameBox) => {
-    // 	const image = gameBox.querySelector("img");
-    // 	if (image) {
-    // 		image.style.visibility = "hidden";
-    // 		console.log("clicked");
-    // 	}
-    // 	gameBox.id = "";
-    // 	global.isUserWinner = false;
-    // 	global.isOppWinner = false;
-    // 	global.isDraw = false;
-    // 	global.userMark === "x"
-    // 		? (global.isUserTurn = true)
-    // 		: (global.isUserTurn = false);
-    // 	checkTurn();
-    // });
+    gameBoxArr.forEach((gameBox) => {
+        const image = gameBox.querySelector("img");
+        if (image) {
+            image.style.visibility = "hidden";
+            console.log("clicked");
+        }
+        gameBox.id = "";
+        global.isUserWinner = false;
+        global.isOppWinner = false;
+        global.isDraw = false;
+        global.userMark === "x"
+            ? (global.isUserTurn = true)
+            : (global.isUserTurn = false);
+        checkTurn();
+    });
     console.log('Reset');
 };
 gameBoxArr.forEach((gameBox) => {
@@ -292,7 +292,6 @@ const checkWinner = () => {
     else {
         global.isUserWinner = false;
         global.isOppWinner = false;
-        global.isDraw = true;
     }
     GetWinner();
     // }
@@ -328,6 +327,7 @@ const GetWinner = () => {
     else if (isGameOver()) {
         console.log("Draw!");
         global.drawScore++;
+        global.isDraw = true;
         localStorage.setItem("drawScore", global.drawScore.toString());
     }
     console.log(global);
@@ -337,6 +337,11 @@ const updateScore = () => {
     userScoreEl.innerText = `${global.userScore}`;
     oppScoreEl.innerText = `${global.oppScore}`;
     drawScoreEl.innerText = `${global.drawScore}`;
+    if (global.isUserWinner || global.isOppWinner || global.isDraw) {
+        setTimeout(function () {
+            reset();
+        }, 1000);
+    }
 };
 const initGame = () => {
     gameBoxArr.forEach((gameBox) => {

@@ -115,21 +115,21 @@ resetBtn?.addEventListener('click', function () {
 })
 
 const reset = () => {
-	// gameBoxArr.forEach((gameBox) => {
-	// 	const image = gameBox.querySelector("img");
-	// 	if (image) {
-	// 		image.style.visibility = "hidden";
-	// 		console.log("clicked");
-	// 	}
-	// 	gameBox.id = "";
-	// 	global.isUserWinner = false;
-	// 	global.isOppWinner = false;
-	// 	global.isDraw = false;
-	// 	global.userMark === "x"
-	// 		? (global.isUserTurn = true)
-	// 		: (global.isUserTurn = false);
-	// 	checkTurn();
-	// });
+	gameBoxArr.forEach((gameBox) => {
+		const image = gameBox.querySelector("img");
+		if (image) {
+			image.style.visibility = "hidden";
+			console.log("clicked");
+		}
+		gameBox.id = "";
+		global.isUserWinner = false;
+		global.isOppWinner = false;
+		global.isDraw = false;
+		global.userMark === "x"
+			? (global.isUserTurn = true)
+			: (global.isUserTurn = false);
+		checkTurn();
+	});
 	console.log('Reset');
 }
 
@@ -330,7 +330,6 @@ const checkWinner = (): void => {
 	} else {
 		global.isUserWinner = false;
 		global.isOppWinner = false;
-		global.isDraw = true;
 	}
 
 	GetWinner();
@@ -368,10 +367,14 @@ const GetWinner = (): void => {
 	} else if (isGameOver()) {
 		console.log("Draw!");
 		global.drawScore++;
+		global.isDraw = true;
 		localStorage.setItem("drawScore", global.drawScore.toString());
 	}
 	console.log(global);
 	updateScore();
+
+	
+	
 };
 
 const updateScore = (): void => {
@@ -379,7 +382,11 @@ const updateScore = (): void => {
 	oppScoreEl!.innerText = `${global.oppScore}`;
 	drawScoreEl!.innerText = `${global.drawScore}`;
 
-
+	if(global.isUserWinner || global.isOppWinner || global.isDraw){
+		setTimeout( function(){
+			reset();
+		}, 1000)
+	}
 };
 
 const initGame = (): void => {
