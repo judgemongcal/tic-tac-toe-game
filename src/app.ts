@@ -1,7 +1,7 @@
 const cpuBtn = document.querySelector('.vs-cpu');
 const humanBtn = document.querySelector('.vs-player');
 const gameBoxArr = document.querySelectorAll(".game-box");
-const resetBtn = document.querySelector(".reset");
+const resetBtn : HTMLButtonElement | null = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
 const optionO = document.querySelector(".o-option");
 const turnMarker = document.querySelector(".turn-img");
@@ -96,8 +96,7 @@ const checkActive = () => {
 
 // RESET GAME
 
-
-const resetGame = () => {
+resetBtn?.addEventListener('click', function () {
 	gameBoxArr.forEach((gameBox) => {
 		const image = gameBox.querySelector("img");
 		if (image) {
@@ -113,12 +112,33 @@ const resetGame = () => {
 			: (global.isUserTurn = false);
 		checkTurn();
 	});
+})
+
+const reset = () => {
+	// gameBoxArr.forEach((gameBox) => {
+	// 	const image = gameBox.querySelector("img");
+	// 	if (image) {
+	// 		image.style.visibility = "hidden";
+	// 		console.log("clicked");
+	// 	}
+	// 	gameBox.id = "";
+	// 	global.isUserWinner = false;
+	// 	global.isOppWinner = false;
+	// 	global.isDraw = false;
+	// 	global.userMark === "x"
+	// 		? (global.isUserTurn = true)
+	// 		: (global.isUserTurn = false);
+	// 	checkTurn();
+	// });
+	console.log('Reset');
 }
+
 
 gameBoxArr.forEach((gameBox) => {
 	gameBox?.addEventListener("click", function () {
 		if(gameBox.id){
 			console.log('Invalid Move');
+			return;
 		} else{
 		gameBox.innerHTML = "";
 		if (global.isUserTurn) {
@@ -130,7 +150,7 @@ gameBoxArr.forEach((gameBox) => {
 			
 			
 			
-		} else {
+		} else if (global.isOpponentHuman && !global.isUserTurn) {
 		
 			gameBox.innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3"/>
@@ -140,12 +160,16 @@ gameBoxArr.forEach((gameBox) => {
 			
 		}
 	}
+
+	checkTurn();
+	checkWinner();
 		
 		if(!global.isOpponentHuman){
-			cpuMove();
+			if(!isGameOver()){
+				cpuMove();
+			}
 		}
-		checkTurn();
-		checkWinner();
+		
 	
 	});
 });
@@ -156,23 +180,23 @@ const generateRandomNum = () : number => {
 	return random;
 }
 
-const cpuMove = (attempts = 0): void => {
-	if (attempts >= 10){
-		return;
-	}
+const cpuMove = (): void => {
+
 	const randomNum = generateRandomNum();
 	console.log(randomNum);
 	if(gameBoxArr[randomNum].id){
-		cpuMove(attempts + 1);
+		cpuMove();
 	} else{
 		gameBoxArr[randomNum].innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id=""/>
             `;
 		gameBoxArr[randomNum].id = `${global.oppMark}-mark`;
 		global.isUserTurn = true;
+		checkTurn();
+		checkWinner();
 	}
-	checkTurn();
-	checkWinner();
+
+	
 	
 } 
 
@@ -348,13 +372,14 @@ const GetWinner = (): void => {
 	}
 	console.log(global);
 	updateScore();
-	// resetGame();
 };
 
 const updateScore = (): void => {
 	userScoreEl!.innerText = `${global.userScore}`;
 	oppScoreEl!.innerText = `${global.oppScore}`;
 	drawScoreEl!.innerText = `${global.drawScore}`;
+
+
 };
 
 const initGame = (): void => {
@@ -366,7 +391,6 @@ const initGame = (): void => {
 	});
 	assignMarks();
 	fetchScores();
-	resetBtn?.addEventListener("click", resetGame);
 };
 
 // Router
@@ -379,7 +403,7 @@ const InitApp = (): void => {
 			break;
 		case "/dist/game.html":
 			console.log("Game");
-			fetchScores();
+			// fetchScores();
 			initGame();
 			checkOpp();
 			// fetchScores();
