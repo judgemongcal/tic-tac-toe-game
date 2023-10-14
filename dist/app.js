@@ -73,23 +73,6 @@ const checkActive = () => {
 };
 // -------------- GAME
 // RESET GAME
-resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener('click', function () {
-    gameBoxArr.forEach((gameBox) => {
-        const image = gameBox.querySelector("img");
-        if (image) {
-            image.style.visibility = "hidden";
-            console.log("clicked");
-        }
-        gameBox.id = "";
-        global.isUserWinner = false;
-        global.isOppWinner = false;
-        global.isDraw = false;
-        global.userMark === "x"
-            ? (global.isUserTurn = true)
-            : (global.isUserTurn = false);
-        checkTurn();
-    });
-});
 const reset = () => {
     gameBoxArr.forEach((gameBox) => {
         const image = gameBox.querySelector("img");
@@ -133,9 +116,13 @@ gameBoxArr.forEach((gameBox) => {
         }
         checkTurn();
         checkWinner();
-        if (!global.isOpponentHuman) {
-            if (!isGameOver()) {
-                cpuMove();
+        if (global.isOpponentHuman === false) {
+            if (isGameOver() === false && global.isUserWinner === false && global.isOppWinner === false) {
+                console.log(isGameOver(), global.isUserWinner, global.isOppWinner);
+                setTimeout(function () { cpuMove(); }, 800);
+            }
+            else {
+                return;
             }
         }
     });
@@ -148,7 +135,7 @@ const generateRandomNum = () => {
 const cpuMove = () => {
     const randomNum = generateRandomNum();
     console.log(randomNum);
-    if (gameBoxArr[randomNum].id) {
+    if (gameBoxArr[randomNum].id && !isGameOver()) {
         cpuMove();
     }
     else {
@@ -293,7 +280,10 @@ const checkWinner = () => {
         global.isUserWinner = false;
         global.isOppWinner = false;
     }
-    GetWinner();
+    if (global.isUserWinner === true || global.isOppWinner === true || global.isDraw === true) {
+        console.log('Winner Found');
+        GetWinner();
+    }
     // }
 };
 const isGameOver = () => {
@@ -308,30 +298,38 @@ const isGameOver = () => {
         gameBoxArr[8].id != "") {
         return true;
     }
+    else if (global.isUserWinner || global.isOppWinner || global.isDraw) {
+        return true;
+    }
     else {
         return false;
     }
 };
 // DISPLAY WINNER
 const GetWinner = () => {
-    if (global.isUserWinner) {
-        console.log("Player 1 Wins!");
-        global.userScore++;
-        localStorage.setItem("userScore", global.userScore.toString());
+    if (isGameOver()) {
+        if (global.isUserWinner) {
+            console.log("Player 1 Wins!");
+            global.userScore++;
+            localStorage.setItem("userScore", global.userScore.toString());
+        }
+        else if (global.isOppWinner) {
+            console.log("Player 2 Wins!");
+            global.oppScore++;
+            localStorage.setItem("oppScore", global.oppScore.toString());
+        }
+        else if (isGameOver()) {
+            console.log("Draw!");
+            global.drawScore++;
+            global.isDraw = true;
+            localStorage.setItem("drawScore", global.drawScore.toString());
+        }
+        console.log(global);
+        updateScore();
     }
-    else if (global.isOppWinner) {
-        console.log("Player 2 Wins!");
-        global.oppScore++;
-        localStorage.setItem("oppScore", global.oppScore.toString());
+    else {
+        return;
     }
-    else if (isGameOver()) {
-        console.log("Draw!");
-        global.drawScore++;
-        global.isDraw = true;
-        localStorage.setItem("drawScore", global.drawScore.toString());
-    }
-    console.log(global);
-    updateScore();
 };
 const updateScore = () => {
     userScoreEl.innerText = `${global.userScore}`;
@@ -340,7 +338,7 @@ const updateScore = () => {
     if (global.isUserWinner || global.isOppWinner || global.isDraw) {
         setTimeout(function () {
             reset();
-        }, 1000);
+        }, 2000);
     }
 };
 const initGame = () => {
@@ -350,6 +348,7 @@ const initGame = () => {
             image.style.visibility = "hidden";
         }
     });
+    resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener('click', reset);
     assignMarks();
     fetchScores();
 };
