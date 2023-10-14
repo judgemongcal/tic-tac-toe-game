@@ -73,7 +73,7 @@ const checkActive = () => {
 };
 // -------------- GAME
 // RESET GAME
-resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", function () {
+const resetGame = () => {
     gameBoxArr.forEach((gameBox) => {
         const image = gameBox.querySelector("img");
         if (image) {
@@ -89,7 +89,7 @@ resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("c
             : (global.isUserTurn = false);
         checkTurn();
     });
-});
+};
 gameBoxArr.forEach((gameBox) => {
     gameBox === null || gameBox === void 0 ? void 0 : gameBox.addEventListener("click", function () {
         if (gameBox.id) {
@@ -112,11 +112,11 @@ gameBoxArr.forEach((gameBox) => {
                 global.isUserTurn = true;
             }
         }
-        checkTurn();
-        checkWinner();
         if (!global.isOpponentHuman) {
             cpuMove();
         }
+        checkTurn();
+        checkWinner();
     });
 });
 const generateRandomNum = () => {
@@ -139,9 +139,9 @@ const cpuMove = (attempts = 0) => {
             `;
         gameBoxArr[randomNum].id = `${global.oppMark}-mark`;
         global.isUserTurn = true;
-        checkTurn();
-        checkWinner();
     }
+    checkTurn();
+    checkWinner();
 };
 // CHECK TURN
 const checkTurn = () => {
@@ -314,6 +314,7 @@ const GetWinner = () => {
     }
     console.log(global);
     updateScore();
+    // resetGame();
 };
 const updateScore = () => {
     userScoreEl.innerText = `${global.userScore}`;
@@ -329,6 +330,7 @@ const initGame = () => {
     });
     assignMarks();
     fetchScores();
+    resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", resetGame);
 };
 // Router
 const InitApp = () => {
