@@ -26,12 +26,18 @@ const global = {
 const initMarks = () => {
     optionX === null || optionX === void 0 ? void 0 : optionX.addEventListener("click", function () {
         checkActive();
+        if (optionO === null || optionO === void 0 ? void 0 : optionO.classList.contains('bg-silver')) {
+            optionO.classList.remove("bg-silver");
+        }
         optionX.classList.add("bg-silver");
         localStorage.setItem("userMark", "x");
         localStorage.setItem("oppMark", "o");
     });
     optionO === null || optionO === void 0 ? void 0 : optionO.addEventListener("click", function () {
         checkActive();
+        if (optionX === null || optionX === void 0 ? void 0 : optionX.classList.contains('bg-silver')) {
+            optionX.classList.remove("bg-silver");
+        }
         optionO.classList.add("bg-silver");
         localStorage.setItem("userMark", "o");
         localStorage.setItem("oppMark", "x");
@@ -50,6 +56,9 @@ const checkOpp = () => {
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
     global.oppMark = localStorage.getItem("oppMark") || "";
+    if (global.oppMark === 'x') {
+        setTimeout(function () { cpuMove(); }, 800);
+    }
 };
 const fetchScores = () => {
     global.userScore = Number(localStorage.getItem("userScore"));
@@ -267,7 +276,7 @@ const checkWinner = () => {
         gameBoxArr[2].id === gameBoxArr[4].id &&
         gameBoxArr[2].id === gameBoxArr[6].id) {
         console.log("Right to Left Diagonal Win");
-        if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+        if (gameBoxArr[2].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
         }
@@ -369,4 +378,5 @@ const InitApp = () => {
             break;
     }
 };
+console.log(window.location.pathname);
 InitApp();

@@ -42,12 +42,18 @@ const global: Global = {
 const initMarks = () => {
 	optionX?.addEventListener("click", function () {
 		checkActive();
+		if(optionO?.classList.contains('bg-silver')){
+			optionO.classList.remove("bg-silver");
+		}
 		optionX.classList.add("bg-silver");
 		localStorage.setItem("userMark", "x");
 		localStorage.setItem("oppMark", "o");
 	});
 	optionO?.addEventListener("click", function () {
 		checkActive();
+		if(optionX?.classList.contains('bg-silver')){
+			optionX.classList.remove("bg-silver");
+		}
 		optionO.classList.add("bg-silver");
 		localStorage.setItem("userMark", "o");
 		localStorage.setItem("oppMark", "x");
@@ -68,6 +74,9 @@ const checkOpp = () => {
 const assignMarks = (): void => {
 	global.userMark = localStorage.getItem("userMark") || "";
 	global.oppMark = localStorage.getItem("oppMark") || "";
+	if(global.oppMark === 'x'){
+		setTimeout(function(){cpuMove()}, 800);
+	}
 };
 
 const fetchScores = (): void => {
@@ -308,7 +317,7 @@ const checkWinner = (): void => {
 		gameBoxArr[2].id === gameBoxArr[6].id
 	) {
 		console.log("Right to Left Diagonal Win");
-		if (gameBoxArr[0].id === `${global.userMark}-mark`) {
+		if (gameBoxArr[2].id === `${global.userMark}-mark`) {
 			global.isUserWinner = true;
 			global.isOppWinner = false;
 		} else {
@@ -419,5 +428,6 @@ const InitApp = (): void => {
 			break;
 	}
 };
+console.log(window.location.pathname);
 
 InitApp();
