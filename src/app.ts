@@ -3,6 +3,8 @@ const humanBtn = document.querySelector('.vs-player');
 const gameBoxArr = document.querySelectorAll(".game-box");
 const resetBtn : HTMLButtonElement | null = document.querySelector(".reset");
 const optionX: HTMLDivElement | null = document.querySelector(".x-option");
+const xPath : HTMLOrSVGImageElement | null = document.querySelector('.x-path');
+const oPath : HTMLOrSVGImageElement | null = document.querySelector('.o-path');
 const optionO = document.querySelector(".o-option");
 const turnMarker = document.querySelector(".turn-img");
 const userScoreEl: HTMLParagraphElement | null =
@@ -44,8 +46,10 @@ const initMarks = () => {
 		checkActive();
 		if(optionO?.classList.contains('bg-silver')){
 			optionO.classList.remove("bg-silver");
+			oPath!.style.fill = '#A8BFC9';
 		}
 		optionX.classList.add("bg-silver");
+		xPath!.style.fill = '#1A2A33';
 		localStorage.setItem("userMark", "x");
 		localStorage.setItem("oppMark", "o");
 	});
@@ -53,8 +57,10 @@ const initMarks = () => {
 		checkActive();
 		if(optionX?.classList.contains('bg-silver')){
 			optionX.classList.remove("bg-silver");
+			xPath!.style.fill = '#A8BFC9';
 		}
 		optionO.classList.add("bg-silver");
+		oPath!.style.fill = '#1A2A33';
 		localStorage.setItem("userMark", "o");
 		localStorage.setItem("oppMark", "x");
 	});

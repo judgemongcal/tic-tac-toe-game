@@ -26,9 +26,11 @@ module.exports = {
 		},
 		width: {
 			gamebox: "140px",
+			option: "32px"
 		},
 		height: {
 			gamebox: "140px",
+			option: "32px"
 		},
 	},
 	plugins: [],
