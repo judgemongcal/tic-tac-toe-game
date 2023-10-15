@@ -603,6 +603,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mr-auto{
+  margin-right: auto;
+}
+
 .flex{
   display: flex;
 }
@@ -677,6 +681,10 @@ video {
 
 .gap-\[20px\]{
   gap: 20px;
+}
+
+.self-center{
+  align-self: center;
 }
 
 .rounded-2xl{
@@ -872,6 +880,18 @@ video {
 }
 
 @media (min-width: 768px){
+  .md\:mt-5{
+    margin-top: 1.25rem;
+  }
+
+  .md\:mt-10{
+    margin-top: 2.5rem;
+  }
+
+  .md\:mt-32{
+    margin-top: 8rem;
+  }
+
   .md\:h-\[201px\]{
     height: 201px;
   }
@@ -880,11 +900,83 @@ video {
     height: 154px;
   }
 
+  .md\:h-\[auto\]{
+    height: auto;
+  }
+
+  .md\:h-\[600px\]{
+    height: 600px;
+  }
+
+  .md\:h-\[500px\]{
+    height: 500px;
+  }
+
+  .md\:h-\[460px\]{
+    height: 460px;
+  }
+
   .md\:w-\[25rem\]{
     width: 25rem;
   }
 
   .md\:w-\[460px\]{
     width: 460px;
+  }
+
+  .md\:w-\[140px\]{
+    width: 140px;
+  }
+
+  .md\:w-\[100px\]{
+    width: 100px;
+  }
+
+  .md\:w-\[120px\]{
+    width: 120px;
+  }
+
+  .md\:w-\[160px\]{
+    width: 160px;
+  }
+
+  .md\:px-\[198px\]{
+    padding-left: 198px;
+    padding-right: 198px;
+  }
+
+  .md\:py-\[54px\]{
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .md\:px-\[100px\]{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .md\:py-\[20px\]{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .md\:px-\[70px\]{
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .md\:px-\[80px\]{
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .md\:py-\[15px\]{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .md\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
