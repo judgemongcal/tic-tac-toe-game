@@ -378,5 +378,4 @@ const InitApp = () => {
             break;
     }
 };
-console.log(window.location.pathname);
 InitApp();

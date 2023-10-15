@@ -872,7 +872,19 @@ video {
 }
 
 @media (min-width: 768px){
+  .md\:h-\[201px\]{
+    height: 201px;
+  }
+
+  .md\:h-\[154px\]{
+    height: 154px;
+  }
+
   .md\:w-\[25rem\]{
     width: 25rem;
+  }
+
+  .md\:w-\[460px\]{
+    width: 460px;
   }
 }
