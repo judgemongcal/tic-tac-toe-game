@@ -699,6 +699,12 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.scale-\[0\.5\]{
+  --tw-scale-x: 0.5;
+  --tw-scale-y: 0.5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -749,6 +755,10 @@ video {
 
 .gap-4{
   gap: 1rem;
+}
+
+.gap-1{
+  gap: 0.25rem;
 }
 
 .rounded-2xl{
@@ -847,6 +857,46 @@ video {
   padding-bottom: 10px;
 }
 
+.px-\[20px\]{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.px-\[15px\]{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.px-\[25px\]{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.px-\[30px\]{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.px-\[40px\]{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.px-\[35px\]{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.py-\[5px\]{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.py-\[3px\]{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .pt-10{
   padding-top: 2.5rem;
 }
@@ -939,6 +989,10 @@ video {
   background-color: rgb(33 49 58 / var(--tw-bg-opacity));
 }
 
+.hover\:fill-silver:hover{
+  fill: #A8BFC9;
+}
+
 .active\:bg-silver:active{
   --tw-bg-opacity: 1;
   background-color: rgb(168 191 201 / var(--tw-bg-opacity));
@@ -959,6 +1013,16 @@ video {
 
   .md\:w-\[460px\]{
     width: 460px;
+  }
+
+  .md\:scale-\[0\.75\]{
+    --tw-scale-x: 0.75;
+    --tw-scale-y: 0.75;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:gap-4{
+    gap: 1rem;
   }
 
   .md\:px-\[80px\]{
@@ -989,5 +1053,10 @@ video {
   .md\:py-\[12px\]{
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+
+  .md\:py-\[10px\]{
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
