@@ -22,6 +22,7 @@ module.exports = {
 			"navy-shadow": "0px 8px 0px 0px #10212A",
 			"navy-shadow-sm": "0px 4px 0px 0px #10212A",
 			"silver-shadow-sm": "0px 4px 0px 0px #6B8997",
+			"yellow-shadow-sm": "0px 4px 0px 0px #CC8B13",
 			"yellow-shadow": "0px 8px 0px 0px #CC8B13",
 			"light-blue-shadow": "0px 8px 0px 0px #118C87",
 		},

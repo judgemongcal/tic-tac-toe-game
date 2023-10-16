@@ -110,9 +110,9 @@
 		</div>
 
 		<div class="result-modal absolute bg-modal-bg w-[100%] h-[100vh] top-0 left-0 z-[1]">
-			<div class="modal-banner bg-dark-navy flex flex-col justify-center text-center">
+			<div class="modal-banner bg-dark-navy flex flex-col justify-center text-center mt-[50%] md:mt-[40%] lg:mt-[27%] md:py-10">
 				<p class="winner text-silver text-[16px] mt-[20px] mb-1">PLAYER 1 WINS!</p>
-				<div class="mark-winner flex flex-row items-center justify-center gap-3">
+				<div class="mark-winner flex flex-row items-center justify-center gap-3 my-2">
 					<div class="modal-mark">
 						<img src="/assets/images/icon-x.svg" alt="" class="w-[30px] lg:w-[64px]">
 					</div>
@@ -120,8 +120,9 @@
 						<h1 class="text-[24px] font-bold text-light-blue mb-1.5">TAKES THE ROUND</h1>
 					</div>
 				</div>
-				<div class="buttons">
-					<button class="bg-silver p-2">QUIT</button>
+				<div class="buttons mb-8 flex flex-row justify-center gap-3">
+					<button class="modal-quit bg-silver py-3.5 px-4 text-[16px] rounded-[10px] shadow-silver-shadow-sm cursor-pointer">QUIT</button>
+					<button class="modal-next-round bg-light-yellow py-3.5 px-4 text-[16px] rounded-[10px] shadow-yellow-shadow-sm cursor-pointer">NEXT ROUND</button>
 				</div>
 			</div>
 		</div>
