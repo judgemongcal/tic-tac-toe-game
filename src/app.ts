@@ -392,10 +392,11 @@ const GetWinner = (): void => {
 	} else {
 		return;
 	}
-	
+};
 
-	
-	
+// DISPLAY MODAL
+const displayModal = () : void => {
+	resultModal!.style.display = 'flex';
 };
 
 const updateScore = (): void => {

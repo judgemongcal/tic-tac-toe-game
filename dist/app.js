@@ -352,6 +352,10 @@ const GetWinner = () => {
         return;
     }
 };
+// DISPLAY MODAL
+const displayModal = () => {
+    resultModal.style.display = 'flex';
+};
 const updateScore = () => {
     userScoreEl.innerText = `${global.userScore}`;
     oppScoreEl.innerText = `${global.oppScore}`;
