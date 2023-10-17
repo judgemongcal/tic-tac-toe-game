@@ -355,6 +355,8 @@ const GetWinner = () => {
 // DISPLAY MODAL
 const displayModal = () => {
     resultModal.style.display = 'flex';
+    global.isUserWinner ? markModal.innerHTML = `<img src="/assets/images/icon-${global.userMark}.svg" alt="" class="w-[30px] lg:w-[64px]">` :
+        markModal.innerHTML = `<img src="/assets/images/icon-${global.oppMark}.svg" alt="" class="w-[30px] lg:w-[64px]">`;
 };
 const updateScore = () => {
     userScoreEl.innerText = `${global.userScore}`;
