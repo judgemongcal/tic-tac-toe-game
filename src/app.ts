@@ -13,6 +13,12 @@ const drawScoreEl: HTMLParagraphElement | null =
 	document.querySelector(".draw-score");
 const oppScoreEl: HTMLParagraphElement | null =
 	document.querySelector(".opp-score");
+const resultModal : HTMLDivElement | null = document.querySelector('.result-modal');
+const winnerP1 : HTMLParagraphElement | null = document.querySelector('.winner');
+const markModal : HTMLDivElement | null = document.querySelector('.modal-mark');
+const textModal : HTMLDivElement | null = document.querySelector('.modal-text');
+const quitBtn : HTMLButtonElement | null = document.querySelector('.modal-quit');
+const nextRoundBtn : HTMLButtonElement | null = document.querySelector('.modal-next-round');
 
 type Global = {
 	isOpponentHuman:boolean;

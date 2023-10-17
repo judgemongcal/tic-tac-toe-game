@@ -11,6 +11,12 @@ const turnMarker = document.querySelector(".turn-img");
 const userScoreEl = document.querySelector(".user-score");
 const drawScoreEl = document.querySelector(".draw-score");
 const oppScoreEl = document.querySelector(".opp-score");
+const resultModal = document.querySelector('.result-modal');
+const winnerP1 = document.querySelector('.winner');
+const markModal = document.querySelector('.modal-mark');
+const textModal = document.querySelector('.modal-text');
+const quitBtn = document.querySelector('.modal-quit');
+const nextRoundBtn = document.querySelector('.modal-next-round');
 const global = {
     isOpponentHuman: false,
     isUserTurn: true,
