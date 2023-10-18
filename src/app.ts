@@ -136,6 +136,9 @@ const reset = () => {
 			? (global.isUserTurn = true)
 			: (global.isUserTurn = false);
 		checkTurn();
+		gameBoxArr.forEach((gameBox) => {
+			gameBox.id = "";
+		});
 	});
 	console.log("Reset");
 };
@@ -184,7 +187,7 @@ gameBoxArr.forEach((gameBox) => {
 
 const generateRandomNum = (): number => {
 	const numOfBoxes = gameBoxArr.length;
-	const random = Math.abs(Math.floor(Math.random() * numOfBoxes - 1));
+	const random = Math.abs(Math.floor(Math.random() * numOfBoxes));
 	return random;
 };
 
@@ -401,6 +404,7 @@ const displayModal = (): void => {
 	winnerP1!.innerText = "";
 
 	if (global.isUserWinner) {
+		winnerP1!.innerText = `PLAYER 2 WINS!`;
 		markModal!.innerHTML = `<img src="/assets/images/icon-${global.userMark}.svg" alt="" class="w-[30px] lg:w-[64px]">`;
 		textModal!.innerHTML = `<h1 class="text-[24px] lg:text-[40px] font-bold text-${
 			global.userMark === "x" ? "light-blue" : "light-yellow"
@@ -413,9 +417,9 @@ const displayModal = (): void => {
 		global.isOpponentHuman
 			? (winnerP1!.innerText = `PLAYER 2 WINS!`)
 			: (winnerP1!.innerText = `OH NO, YOU LOST...`);
-	} else if (!global.isOppWinner && global.isUserWinner) {
+	} else if (global.isDraw) {
 		markModal!.style.display = "hidden";
-		textModal!.innerHTML = `<h1 class="text-[24px] lg:text-[40px] font-bold text-silver ">ROUND TIED/h1>`;
+		textModal!.innerHTML = `<h1 class="text-[24px] lg:text-[40px] font-bold text-silver mb-2 ">ROUND TIED</h1>`;
 	}
 	resultModal!.style.display = "block";
 
