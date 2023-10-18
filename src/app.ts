@@ -189,20 +189,18 @@ const generateRandomNum = (): number => {
 };
 
 const cpuMove = (): void => {
-	if (!isGameOver()) {
-		const randomNum = generateRandomNum();
-		console.log(randomNum);
-		if (gameBoxArr[randomNum].id && !isGameOver()) {
-			cpuMove();
-		} else {
-			gameBoxArr[randomNum].innerHTML = `
+	const randomNum = generateRandomNum();
+	console.log(randomNum);
+	if (gameBoxArr[randomNum].id && !isGameOver()) {
+		cpuMove();
+	} else {
+		gameBoxArr[randomNum].innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id=""/>
             `;
-			gameBoxArr[randomNum].id = `${global.oppMark}-mark`;
-			global.isUserTurn = true;
-			checkTurn();
-			checkWinner();
-		}
+		gameBoxArr[randomNum].id = `${global.oppMark}-mark`;
+		global.isUserTurn = true;
+		checkTurn();
+		checkWinner();
 	}
 };
 
@@ -333,9 +331,10 @@ const checkWinner = (): void => {
 			global.isUserWinner = false;
 			global.isOppWinner = true;
 		}
-	} else {
+	} else if (isGameOver()) {
 		global.isUserWinner = false;
 		global.isOppWinner = false;
+		global.isDraw = true;
 	}
 
 	if (
@@ -381,7 +380,7 @@ const GetWinner = (): void => {
 			console.log("Player 2 Wins!");
 			global.oppScore++;
 			localStorage.setItem("oppScore", global.oppScore.toString());
-		} else if (isGameOver()) {
+		} else if (global.isDraw) {
 			console.log("Draw!");
 			global.drawScore++;
 			global.isDraw = true;
