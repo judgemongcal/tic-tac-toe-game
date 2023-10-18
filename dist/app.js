@@ -111,11 +111,13 @@ const reset = () => {
             ? (global.isUserTurn = true)
             : (global.isUserTurn = false);
         checkTurn();
-        gameBoxArr.forEach((gameBox) => {
-            gameBox.removeAttribute("id");
-        });
     });
     console.log("Reset");
+    if (!global.isOpponentHuman && !global.isUserTurn) {
+        setTimeout(function () {
+            cpuMove();
+        }, 800);
+    }
 };
 gameBoxArr.forEach((gameBox) => {
     gameBox === null || gameBox === void 0 ? void 0 : gameBox.addEventListener("click", function () {
@@ -146,7 +148,6 @@ gameBoxArr.forEach((gameBox) => {
             if (isGameOver() === false &&
                 global.isUserWinner === false &&
                 global.isOppWinner === false) {
-                console.log(isGameOver(), global.isUserWinner, global.isOppWinner);
                 setTimeout(function () {
                     cpuMove();
                 }, 800);
@@ -158,13 +159,37 @@ gameBoxArr.forEach((gameBox) => {
     });
 });
 const generateRandomNum = () => {
-    const numOfBoxes = gameBoxArr.length;
-    const random = Math.floor(Math.random() * numOfBoxes);
-    console.log("Passing " + random);
-    console.log(gameBoxArr[random].id);
-    if (gameBoxArr[random].hasAttribute("id")) {
-        generateRandomNum();
+    // const numOfBoxes = gameBoxArr.length;
+    // const random = Math.floor(Math.random() * numOfBoxes);
+    // console.log("Passing " + random);
+    // console.log(gameBoxArr[random].id);
+    // if (gameBoxArr[random].hasAttribute("id")) {
+    // 	generateRandomNum();
+    // }
+    let numOfBoxes = gameBoxArr.length;
+    let random = 0;
+    // while (true) {
+    // 	random = Math.floor(Math.random() * numOfBoxes);
+    // 	if (!gameBoxArr[random].hasAttribute("id")) {
+    // 		break;
+    // 	}
+    // }
+    // for (let i: number = 0; i < numOfBoxes; i++) {
+    // 	if (gameBoxArr[i].id != `${global.userMark}-mark`) {
+    // 		random = i;
+    // 		break;
+    // 	}
+    // }
+    while (gameBoxArr[random].id === `${global.userMark}-mark` ||
+        gameBoxArr[random].id === `${global.oppMark}-mark`) {
+        random = Math.floor(Math.random() * numOfBoxes);
+        console.log(random);
+        if (gameBoxArr[random].id != `${global.userMark}-mark` &&
+            gameBoxArr[random].id != `${global.oppMark}-mark`) {
+            break;
+        }
     }
+    console.log(random);
     return random;
 };
 const cpuMove = () => {
@@ -372,7 +397,7 @@ const displayModal = () => {
     textModal.innerHTML = "";
     winnerP1.innerText = "";
     if (global.isUserWinner) {
-        winnerP1.innerText = `PLAYER 2 WINS!`;
+        winnerP1.innerText = `PLAYER 1 WINS!`;
         markModal.innerHTML = `<img src="/assets/images/icon-${global.userMark}.svg" alt="" class="w-[30px] lg:w-[64px]">`;
         textModal.innerHTML = `<h1 class="text-[24px] lg:text-[40px] font-bold text-${global.userMark === "x" ? "light-blue" : "light-yellow"} ">TAKES THE ROUND</h1>`;
     }
@@ -392,13 +417,14 @@ const displayModal = () => {
         quitGame();
     });
     nextRoundBtn === null || nextRoundBtn === void 0 ? void 0 : nextRoundBtn.addEventListener("click", function () {
-        reset();
         hideModal();
-        if (!global.isUserTurn && !global.isOpponentHuman) {
-            setTimeout(function () {
-                cpuMove();
-            }, 800);
-        }
+        reset();
+        // if (!global.isUserTurn && !global.isOpponentHuman) {
+        // 	setTimeout(function () {
+        // 		cpuMove();
+        // 	}, 800);
+        // }
+        // cpuMove();
     });
 };
 const hideModal = () => {
