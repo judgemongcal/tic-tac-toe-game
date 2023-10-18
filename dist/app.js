@@ -112,7 +112,7 @@ const reset = () => {
             : (global.isUserTurn = false);
         checkTurn();
         gameBoxArr.forEach((gameBox) => {
-            gameBox.id = "";
+            gameBox.removeAttribute("id");
         });
     });
     console.log("Reset");
@@ -159,16 +159,17 @@ gameBoxArr.forEach((gameBox) => {
 });
 const generateRandomNum = () => {
     const numOfBoxes = gameBoxArr.length;
-    const random = Math.abs(Math.floor(Math.random() * numOfBoxes));
+    const random = Math.floor(Math.random() * numOfBoxes);
+    console.log("Passing " + random);
+    console.log(gameBoxArr[random].id);
+    if (gameBoxArr[random].hasAttribute("id")) {
+        generateRandomNum();
+    }
     return random;
 };
 const cpuMove = () => {
-    const randomNum = generateRandomNum();
-    console.log(randomNum);
-    if (gameBoxArr[randomNum].id && !isGameOver()) {
-        cpuMove();
-    }
-    else {
+    if (!isGameOver()) {
+        const randomNum = generateRandomNum();
         gameBoxArr[randomNum].innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id=""/>
             `;
