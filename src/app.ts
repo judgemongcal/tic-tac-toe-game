@@ -36,7 +36,7 @@ type Global = {
 };
 const global: Global = {
 	isOpponentHuman: false,
-	isUserTurn: true,
+	isUserTurn: false,
 	userMark: "",
 	oppMark: "",
 	isUserWinner: false,
@@ -88,11 +88,11 @@ const checkOpp = () => {
 const assignMarks = (): void => {
 	global.userMark = localStorage.getItem("userMark") || "";
 	global.oppMark = localStorage.getItem("oppMark") || "";
-	// if (global.oppMark === "x") {
-	// 	setTimeout(function () {
-	// 		cpuMove();
-	// 	}, 800);
-	// }
+	if (global.oppMark === "x") {
+		setTimeout(function () {
+			cpuMove();
+		}, 800);
+	}
 };
 
 const fetchScores = (): void => {
@@ -243,7 +243,7 @@ const checkTurn = (): void => {
 		  );
 };
 
-// CHECK WINNER
+// CHECK FOR WINNER
 const checkWinner = (): void => {
 	if (
 		// First Row
@@ -487,7 +487,10 @@ const initGame = (): void => {
 	resetBtn?.addEventListener("click", reset);
 	assignMarks();
 	fetchScores();
-	if (global.oppMark === "x") {
+	global.userMark === "x"
+		? (global.isUserTurn = true)
+		: (global.isUserTurn = false);
+	if (!global.isOpponentHuman && global.isUserTurn) {
 		setTimeout(function () {
 			cpuMove();
 		}, 800);

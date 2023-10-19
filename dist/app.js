@@ -19,7 +19,7 @@ const quitBtn = document.querySelector(".modal-quit");
 const nextRoundBtn = document.querySelector(".modal-next-round");
 const global = {
     isOpponentHuman: false,
-    isUserTurn: true,
+    isUserTurn: false,
     userMark: "",
     oppMark: "",
     isUserWinner: false,
@@ -68,11 +68,11 @@ const checkOpp = () => {
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
     global.oppMark = localStorage.getItem("oppMark") || "";
-    // if (global.oppMark === "x") {
-    // 	setTimeout(function () {
-    // 		cpuMove();
-    // 	}, 800);
-    // }
+    if (global.oppMark === "x") {
+        setTimeout(function () {
+            cpuMove();
+        }, 800);
+    }
 };
 const fetchScores = () => {
     global.userScore = Number(localStorage.getItem("userScore"));
@@ -202,7 +202,7 @@ const checkTurn = () => {
         ? turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.userMark}.svg`)
         : turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.oppMark}.svg`);
 };
-// CHECK WINNER
+// CHECK FOR WINNER
 const checkWinner = () => {
     if (
     // First Row
@@ -442,7 +442,10 @@ const initGame = () => {
     resetBtn === null || resetBtn === void 0 ? void 0 : resetBtn.addEventListener("click", reset);
     assignMarks();
     fetchScores();
-    if (global.oppMark === "x") {
+    global.userMark === "x"
+        ? (global.isUserTurn = true)
+        : (global.isUserTurn = false);
+    if (!global.isOpponentHuman && global.isUserTurn) {
         setTimeout(function () {
             cpuMove();
         }, 800);
