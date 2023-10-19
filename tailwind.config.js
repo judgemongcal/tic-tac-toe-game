@@ -3,6 +3,9 @@ module.exports = {
 	content: ["./dist/*.{html,js}"],
 	theme: {
 		extend: {},
+		screens: {
+			xs: "375px",
+		},
 		fontFamily: {
 			outfit: ["Outfit", "sans-serif"],
 		},
@@ -16,7 +19,7 @@ module.exports = {
 			"light-yellow": "#F2B137",
 			"light-yellow-hover": "#FFC860",
 			"navy-hover": "#21313A",
-			"modal-bg" : "rgba(0,0,0,0.5)"
+			"modal-bg": "rgba(0,0,0,0.5)",
 		},
 		boxShadow: {
 			"navy-shadow": "0px 8px 0px 0px #10212A",
@@ -28,11 +31,11 @@ module.exports = {
 		},
 		width: {
 			gamebox: "140px",
-			option: "32px"
+			option: "32px",
 		},
 		height: {
 			gamebox: "140px",
-			option: "32px"
+			option: "32px",
 		},
 	},
 	plugins: [],
