@@ -466,6 +466,9 @@ const hideModal = (): void => {
 
 // QUIT GAME
 const quitGame = (): void => {
+	localStorage.removeItem("userScore");
+	localStorage.removeItem("oppScore");
+	localStorage.removeItem("drawScore");
 	window.location.href = `http://127.0.0.1:5501/dist/index.html`;
 };
 
