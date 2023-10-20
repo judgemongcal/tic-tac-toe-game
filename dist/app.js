@@ -63,7 +63,6 @@ const initMarks = () => {
 };
 const checkOpp = () => {
     global.isOpponentHuman = JSON.parse(localStorage.getItem("isOppHuman") || "");
-    console.log(global.isOpponentHuman);
 };
 const assignMarks = () => {
     global.userMark = localStorage.getItem("userMark") || "";
@@ -101,10 +100,8 @@ const reset = () => {
         const image = gameBox.querySelector("img");
         if (image) {
             image.style.visibility = "hidden";
-            console.log("clicked");
         }
         gameBox.removeAttribute("id");
-        console.log(gameBox.id);
     });
     global.isUserWinner = false;
     global.isOppWinner = false;
@@ -120,12 +117,10 @@ const reset = () => {
         }, 800);
     }
     checkTurn();
-    console.log(gameBoxArr);
 };
 gameBoxArr.forEach((gameBox) => {
     gameBox === null || gameBox === void 0 ? void 0 : gameBox.addEventListener("click", function () {
         if (gameBox.id) {
-            console.log("Invalid Move");
             return;
         }
         else {
@@ -161,23 +156,6 @@ gameBoxArr.forEach((gameBox) => {
         }
     });
 });
-// const generateRandomNum = (): number => {
-// 	let numOfBoxes = gameBoxArr.length;
-// 	let random: number = Math.floor(Math.random() * numOfBoxes);
-// 	while (
-// 		gameBoxArr[random].id
-// 		// == `${global.userMark}-mark` ||
-// 		// gameBoxArr[random].id === `${global.oppMark}-mark`
-// 	) {
-// 		random = Math.floor(Math.random() * numOfBoxes);
-// 		// console.log(random);
-// 		if (!gameBoxArr[random].id) {
-// 			break;
-// 		}
-// 	}
-// 	console.log(random);
-// 	return random;
-// };
 const cpuMove = () => {
     if (!isGameOver() && !global.isUserTurn) {
         let numOfBoxes = gameBoxArr.length;
@@ -209,7 +187,6 @@ const checkWinner = () => {
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[1].id &&
         gameBoxArr[1].id === gameBoxArr[2].id) {
-        console.log("First Row Win");
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -224,7 +201,6 @@ const checkWinner = () => {
     gameBoxArr[3].id != "" &&
         gameBoxArr[3].id === gameBoxArr[4].id &&
         gameBoxArr[3].id === gameBoxArr[5].id) {
-        console.log("Second Row Win");
         if (gameBoxArr[3].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -239,7 +215,6 @@ const checkWinner = () => {
     gameBoxArr[6].id != "" &&
         gameBoxArr[6].id === gameBoxArr[7].id &&
         gameBoxArr[6].id === gameBoxArr[8].id) {
-        console.log("Third Row Win");
         if (gameBoxArr[6].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -254,7 +229,6 @@ const checkWinner = () => {
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[3].id &&
         gameBoxArr[0].id === gameBoxArr[6].id) {
-        console.log("First Col Win");
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -269,7 +243,6 @@ const checkWinner = () => {
     gameBoxArr[1].id != "" &&
         gameBoxArr[1].id === gameBoxArr[4].id &&
         gameBoxArr[1].id === gameBoxArr[7].id) {
-        console.log("Second Col Win");
         if (gameBoxArr[1].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -284,7 +257,6 @@ const checkWinner = () => {
     gameBoxArr[2].id != "" &&
         gameBoxArr[2].id === gameBoxArr[5].id &&
         gameBoxArr[2].id === gameBoxArr[8].id) {
-        console.log("Third Col Win");
         if (gameBoxArr[2].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -299,7 +271,6 @@ const checkWinner = () => {
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[4].id &&
         gameBoxArr[0].id === gameBoxArr[8].id) {
-        console.log("Left to Right Diagonal Win");
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -314,7 +285,6 @@ const checkWinner = () => {
     gameBoxArr[2].id != "" &&
         gameBoxArr[2].id === gameBoxArr[4].id &&
         gameBoxArr[2].id === gameBoxArr[6].id) {
-        console.log("Right to Left Diagonal Win");
         if (gameBoxArr[2].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -332,7 +302,6 @@ const checkWinner = () => {
     if (global.isUserWinner === true ||
         global.isOppWinner === true ||
         global.isDraw === true) {
-        console.log("Winner Found");
         GetWinner();
     }
     // }
@@ -376,7 +345,6 @@ const GetWinner = () => {
             global.isDraw = true;
             localStorage.setItem("drawScore", global.drawScore.toString());
         }
-        console.log(global);
         updateScore();
         displayModal();
     }
@@ -406,14 +374,11 @@ const displayModal = () => {
         textModal.innerHTML = `<h1 class="text-[24px] lg:text-[40px] font-bold text-silver mb-2 ">ROUND TIED</h1>`;
     }
     resultModal.style.display = "block";
-    console.log(gameBoxArr);
     quitBtn === null || quitBtn === void 0 ? void 0 : quitBtn.addEventListener("click", function () {
         quitGame();
     });
     nextRoundBtn === null || nextRoundBtn === void 0 ? void 0 : nextRoundBtn.addEventListener("click", function () {
         hideModal();
-        console.log("Before Reset");
-        console.log(gameBoxArr);
         reset();
     });
 };
