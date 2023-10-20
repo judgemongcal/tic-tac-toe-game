@@ -469,6 +469,9 @@ const quitGame = (): void => {
 	localStorage.removeItem("userScore");
 	localStorage.removeItem("oppScore");
 	localStorage.removeItem("drawScore");
+	localStorage.removeItem("userMark");
+	localStorage.removeItem("oppMark");
+	localStorage.removeItem("isOppHuman");
 	window.location.href = `http://127.0.0.1:5501/dist/index.html`;
 };
 
