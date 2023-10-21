@@ -17,6 +17,15 @@ const markModal = document.querySelector(".modal-mark");
 const textModal = document.querySelector(".modal-text");
 const quitBtn = document.querySelector(".modal-quit");
 const nextRoundBtn = document.querySelector(".modal-next-round");
+const box0 = document.querySelector(".box-0");
+const box1 = document.querySelector(".box-1");
+const box2 = document.querySelector(".box-2");
+const box3 = document.querySelector(".box-3");
+const box4 = document.querySelector(".box-4");
+const box5 = document.querySelector(".box-5");
+const box6 = document.querySelector(".box-6");
+const box7 = document.querySelector(".box-7");
+const box8 = document.querySelector(".box-8");
 const global = {
     isOpponentHuman: false,
     isUserTurn: false,
@@ -180,13 +189,43 @@ const checkTurn = () => {
         ? turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.userMark}.svg`)
         : turnMarker === null || turnMarker === void 0 ? void 0 : turnMarker.setAttribute("src", `../assets/images/icon-${global.oppMark}.svg`);
 };
+// ANIMATE WINNING COMBO
+const animateCombo = (winningCombo) => {
+    if (global.isDraw) {
+        return;
+    }
+    else {
+        winningCombo.forEach((number) => {
+            gameBoxArr[number].classList.remove("bg-semi-dark-navy");
+            if (global.isUserWinner) {
+                gameBoxArr[number].classList.add(global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow");
+            }
+            else {
+                gameBoxArr[number].classList.add(global.oppMark == "x" ? "bg-light-blue" : "bg-light-yellow");
+            }
+        });
+    }
+    // box1?.classList.remove("bg-semi-dark-navy");
+    // box2?.classList.remove("bg-semi-dark-navy");
+    // box0?.classList.add(
+    // 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
+    // );
+    // box1?.classList.add(
+    // 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
+    // );
+    // box2?.classList.add(
+    // 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
+    // );
+};
 // CHECK FOR WINNER
 const checkWinner = () => {
+    const winningCombo = [];
     if (
     // First Row
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[1].id &&
         gameBoxArr[1].id === gameBoxArr[2].id) {
+        winningCombo.push(0, 1, 2);
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -201,6 +240,7 @@ const checkWinner = () => {
     gameBoxArr[3].id != "" &&
         gameBoxArr[3].id === gameBoxArr[4].id &&
         gameBoxArr[3].id === gameBoxArr[5].id) {
+        winningCombo.push(3, 4, 5);
         if (gameBoxArr[3].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -215,6 +255,7 @@ const checkWinner = () => {
     gameBoxArr[6].id != "" &&
         gameBoxArr[6].id === gameBoxArr[7].id &&
         gameBoxArr[6].id === gameBoxArr[8].id) {
+        winningCombo.push(6, 7, 8);
         if (gameBoxArr[6].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -229,6 +270,7 @@ const checkWinner = () => {
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[3].id &&
         gameBoxArr[0].id === gameBoxArr[6].id) {
+        winningCombo.push(0, 3, 6);
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -243,6 +285,7 @@ const checkWinner = () => {
     gameBoxArr[1].id != "" &&
         gameBoxArr[1].id === gameBoxArr[4].id &&
         gameBoxArr[1].id === gameBoxArr[7].id) {
+        winningCombo.push(1, 4, 7);
         if (gameBoxArr[1].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -257,6 +300,7 @@ const checkWinner = () => {
     gameBoxArr[2].id != "" &&
         gameBoxArr[2].id === gameBoxArr[5].id &&
         gameBoxArr[2].id === gameBoxArr[8].id) {
+        winningCombo.push(2, 5, 8);
         if (gameBoxArr[2].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -271,6 +315,7 @@ const checkWinner = () => {
     gameBoxArr[0].id != "" &&
         gameBoxArr[0].id === gameBoxArr[4].id &&
         gameBoxArr[0].id === gameBoxArr[8].id) {
+        winningCombo.push(0, 4, 8);
         if (gameBoxArr[0].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -285,6 +330,7 @@ const checkWinner = () => {
     gameBoxArr[2].id != "" &&
         gameBoxArr[2].id === gameBoxArr[4].id &&
         gameBoxArr[2].id === gameBoxArr[6].id) {
+        winningCombo.push(2, 4, 6);
         if (gameBoxArr[2].id === `${global.userMark}-mark`) {
             global.isUserWinner = true;
             global.isOppWinner = false;
@@ -303,6 +349,7 @@ const checkWinner = () => {
         global.isOppWinner === true ||
         global.isDraw === true) {
         GetWinner();
+        animateCombo(winningCombo);
     }
     // }
 };
