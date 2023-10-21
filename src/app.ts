@@ -21,6 +21,15 @@ const textModal: HTMLDivElement | null = document.querySelector(".modal-text");
 const quitBtn: HTMLButtonElement | null = document.querySelector(".modal-quit");
 const nextRoundBtn: HTMLButtonElement | null =
 	document.querySelector(".modal-next-round");
+const box0: HTMLDivElement | null = document.querySelector(".box-0");
+const box1: HTMLDivElement | null = document.querySelector(".box-1");
+const box2: HTMLDivElement | null = document.querySelector(".box-2");
+const box3: HTMLDivElement | null = document.querySelector(".box-3");
+const box4: HTMLDivElement | null = document.querySelector(".box-4");
+const box5: HTMLDivElement | null = document.querySelector(".box-5");
+const box6: HTMLDivElement | null = document.querySelector(".box-6");
+const box7: HTMLDivElement | null = document.querySelector(".box-7");
+const box8: HTMLDivElement | null = document.querySelector(".box-8");
 
 type Global = {
 	isOpponentHuman: boolean;
