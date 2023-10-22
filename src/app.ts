@@ -516,12 +516,12 @@ const initGame = (): void => {
 // ROUTER
 const InitApp = (): void => {
 	switch (window.location.pathname) {
-		case "/dist/index.html":
+		case "/":
 			console.log("Index");
 			initMarks();
 
 			break;
-		case "/dist/game.html":
+		case "/game":
 			console.log("Game");
 			initGame();
 			checkOpp();
