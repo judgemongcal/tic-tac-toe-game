@@ -476,7 +476,7 @@ const quitGame = (): void => {
 	localStorage.removeItem("userMark");
 	localStorage.removeItem("oppMark");
 	localStorage.removeItem("isOppHuman");
-	window.location.href = `https://startling-kitsune-68c370.netlify.app/`;
+	window.location.href = `https://judgemongcal-tic-tac-toe.netlify.app/`;
 };
 
 // UPDATE SCORE
