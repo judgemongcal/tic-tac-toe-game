@@ -142,8 +142,6 @@ const reset = () => {
 		? (global.isUserTurn = true)
 		: (global.isUserTurn = false);
 
-	console.log("Reset");
-	console.log(gameBoxArr);
 	if (!global.isOpponentHuman && !global.isUserTurn) {
 		setTimeout(function () {
 			cpuMove();
@@ -200,7 +198,6 @@ const cpuMove = (): void => {
 			random = Math.floor(Math.random() * numOfBoxes);
 		}
 		const randomNum = random;
-		console.log(randomNum);
 
 		gameBoxArr[randomNum].innerHTML = `
             <img src="../assets/images/icon-${global.oppMark}.svg" alt="" class="p-3" id=""/>
@@ -414,15 +411,12 @@ const isGameOver = (): boolean => {
 const GetWinner = (): void => {
 	if (isGameOver()) {
 		if (global.isUserWinner) {
-			console.log("Player 1 Wins!");
 			global.userScore++;
 			localStorage.setItem("userScore", global.userScore.toString());
 		} else if (global.isOppWinner) {
-			console.log("Player 2 Wins!");
 			global.oppScore++;
 			localStorage.setItem("oppScore", global.oppScore.toString());
 		} else if (global.isDraw) {
-			console.log("Draw!");
 			global.drawScore++;
 			global.isDraw = true;
 			localStorage.setItem("drawScore", global.drawScore.toString());
@@ -482,7 +476,7 @@ const quitGame = (): void => {
 	localStorage.removeItem("userMark");
 	localStorage.removeItem("oppMark");
 	localStorage.removeItem("isOppHuman");
-	window.location.href = `http://127.0.0.1:5501/dist/index.html`;
+	window.location.href = `/`;
 };
 
 // UPDATE SCORE
@@ -517,12 +511,10 @@ const initGame = (): void => {
 const InitApp = (): void => {
 	switch (window.location.pathname) {
 		case "/":
-			console.log("Index");
 			initMarks();
 
 			break;
 		case "/game":
-			console.log("Game");
 			initGame();
 			checkOpp();
 			break;
