@@ -21,15 +21,6 @@ const textModal: HTMLDivElement | null = document.querySelector(".modal-text");
 const quitBtn: HTMLButtonElement | null = document.querySelector(".modal-quit");
 const nextRoundBtn: HTMLButtonElement | null =
 	document.querySelector(".modal-next-round");
-const box0: HTMLDivElement | null = document.querySelector(".box-0");
-const box1: HTMLDivElement | null = document.querySelector(".box-1");
-const box2: HTMLDivElement | null = document.querySelector(".box-2");
-const box3: HTMLDivElement | null = document.querySelector(".box-3");
-const box4: HTMLDivElement | null = document.querySelector(".box-4");
-const box5: HTMLDivElement | null = document.querySelector(".box-5");
-const box6: HTMLDivElement | null = document.querySelector(".box-6");
-const box7: HTMLDivElement | null = document.querySelector(".box-7");
-const box8: HTMLDivElement | null = document.querySelector(".box-8");
 
 type Global = {
 	isOpponentHuman: boolean;
@@ -142,7 +133,6 @@ const reset = () => {
 		gameBox.classList.remove("bg-light-blue");
 		gameBox.classList.remove("bg-light-yellow");
 		gameBox.classList.add("bg-semi-dark-navy");
-		// gameBox.querySelector("img")!.setAttribute("src", "");
 	});
 
 	global.isUserWinner = false;
@@ -251,11 +241,6 @@ const animateCombo = (winningCombo: number[]) => {
 					global.userMark === "x"
 						? `<svg width="64" height="64" class='scale-[0.50]' xmlns="http://www.w3.org/2000/svg"><path d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z" stroke="#31C3BD" stroke-width="2" fill="#1A2A33"/></svg>`
 						: `<svg width="66" height="66" xmlns="http://www.w3.org/2000/svg"><path d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z" stroke="#F2B137" stroke-width="2" fill="#1A2A33"/></svg>`;
-				// .querySelector("img")
-				// ?.setAttribute(
-				// 	"src",
-				// 	`../assets/images/icon-${global.userMark}-outline.svg`,
-				// );
 			} else {
 				gameBoxArr[number].classList.add(
 					global.oppMark == "x" ? "bg-light-blue" : "bg-light-yellow",
@@ -268,19 +253,6 @@ const animateCombo = (winningCombo: number[]) => {
 			}
 		});
 	}
-
-	// box1?.classList.remove("bg-semi-dark-navy");
-	// box2?.classList.remove("bg-semi-dark-navy");
-
-	// box0?.classList.add(
-	// 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
-	// );
-	// box1?.classList.add(
-	// 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
-	// );
-	// box2?.classList.add(
-	// 	global.userMark == "x" ? "bg-light-blue" : "bg-light-yellow",
-	// );
 };
 
 // CHECK FOR WINNER
@@ -551,11 +523,8 @@ const InitApp = (): void => {
 			break;
 		case "/dist/game.html":
 			console.log("Game");
-			// fetchScores();
 			initGame();
 			checkOpp();
-			// fetchScores();
-			// assignMarks();
 			break;
 	}
 };
