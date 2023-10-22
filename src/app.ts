@@ -191,7 +191,7 @@ gameBoxArr.forEach((gameBox) => {
 });
 
 const cpuMove = (): void => {
-	if (!isGameOver() && !global.isUserTurn) {
+	if (!isGameOver() && !global.isUserTurn && !global.isOpponentHuman) {
 		let numOfBoxes = gameBoxArr.length;
 		let random: number = Math.floor(Math.random() * numOfBoxes);
 		while (gameBoxArr[random].id) {
@@ -476,7 +476,7 @@ const quitGame = (): void => {
 	localStorage.removeItem("userMark");
 	localStorage.removeItem("oppMark");
 	localStorage.removeItem("isOppHuman");
-	window.location.href = `/`;
+	window.location.href = `https://startling-kitsune-68c370.netlify.app/`;
 };
 
 // UPDATE SCORE

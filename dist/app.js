@@ -162,7 +162,7 @@ gameBoxArr.forEach((gameBox) => {
     });
 });
 const cpuMove = () => {
-    if (!isGameOver() && !global.isUserTurn) {
+    if (!isGameOver() && !global.isUserTurn && !global.isOpponentHuman) {
         let numOfBoxes = gameBoxArr.length;
         let random = Math.floor(Math.random() * numOfBoxes);
         while (gameBoxArr[random].id) {
@@ -432,7 +432,7 @@ const quitGame = () => {
     localStorage.removeItem("userMark");
     localStorage.removeItem("oppMark");
     localStorage.removeItem("isOppHuman");
-    window.location.href = `/`;
+    window.location.href = `https://startling-kitsune-68c370.netlify.app/`;
 };
 // UPDATE SCORE
 const updateScore = () => {
